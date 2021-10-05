@@ -28,10 +28,15 @@ namespace HelloWorld
 
             Program.Example();
 
+            //We instantiated an object called Stephen from the House class
             House Stephen = new House();
             // Console.WriteLine(Stephen.owner);
+
+            //We set the properties of the house to some value
             Stephen.MiceName = "Jerry";
             Stephen.Owner = "Colin";
+
+            //We displayed those changed values into the terminal
             Console.WriteLine(Stephen.MiceName);
             Console.WriteLine(Stephen.Owner);
             Console.WriteLine(Stephen.owner);
