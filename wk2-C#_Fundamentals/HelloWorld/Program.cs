@@ -43,7 +43,7 @@ namespace HelloWorld
 
             //Solution to group activity to record a user input from the terminal
             Console.WriteLine("What's your name?");
-            string name = Console.ReadLine();
+            string name = Console.ReadLine(); //ReadLine method is the same as the read CLI from the bash scripting
             Console.WriteLine($"Hello {name}! Welcome to programming!"); //This is a example of string interpolation in C#
         }
 
