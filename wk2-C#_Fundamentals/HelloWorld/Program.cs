@@ -40,6 +40,11 @@ namespace HelloWorld
             Console.WriteLine(Stephen.MiceName);
             Console.WriteLine(Stephen.Owner);
             Console.WriteLine(Stephen.owner);
+
+            //Solution to group activity to record a user input from the terminal
+            Console.WriteLine("What's your name?");
+            string name = Console.ReadLine();
+            Console.WriteLine($"Hello {name}! Welcome to programming!"); //This is a example of string interpolation in C#
         }
 
         public static int Example()
