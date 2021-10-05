@@ -1,5 +1,5 @@
 ﻿using System;
-using HouseFunction;
+using HouseFunction; //You have to add the namespace from the House class to use the House class
 // This is a comment
 
 /*
