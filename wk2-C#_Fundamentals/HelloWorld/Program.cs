@@ -1,4 +1,5 @@
 ﻿using System;
+using CollectionFunction;
 using HouseFunction; //You have to add the namespace from the House class to use the House class
 // This is a comment
 
@@ -45,6 +46,9 @@ namespace HelloWorld
             Console.WriteLine("What's your name?");
             string name = Console.ReadLine(); //ReadLine method is the same as the read CLI from the bash scripting
             Console.WriteLine($"Hello {name}! Welcome to programming!"); //This is a example of string interpolation in C#
+        
+            Collection collectionObj = new Collection();
+            collectionObj.CollectionMain();
         }
 
         public static int Example()
