@@ -18,7 +18,6 @@ namespace RRUI
                 Console.WriteLine("[2] - Do you want to exit out of the program?");
                 userChoice = Console.ReadLine();
 
-                
                 switch (userChoice)
                 {
                     case "1":
