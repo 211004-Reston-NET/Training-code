@@ -7,34 +7,37 @@ namespace RRUI
         static void Main(string[] args)
         {
             bool repeat = true;
+            //This is example of polymorphism, abstraction, and inheritance all at the same time
+            IMenu page = new MainMenu();
 
             while (repeat)
             {
                 //Clean the screen on the terminal
                 Console.Clear();
-                Console.WriteLine("Welcome to the Restaurant");
-                string userChoice;
-                Console.WriteLine("[1] - Do you want to clear the screen?");
-                Console.WriteLine("[2] - Do you want to exit out of the program?");
-                userChoice = Console.ReadLine();
+                
+                page.Menu();
+                MenuType currentPage = page.YourChoice();
 
-                switch (userChoice)
+                switch (currentPage)
                 {
-                    case "1":
-                        Console.WriteLine("User has chosen to clear the screen");
-                        Console.WriteLine("Press Enter to continue...");
-                        Console.ReadLine();
+                    case MenuType.MainMenu:
+                        page = new MainMenu();
                         break;
-                    case "2":
-                        repeat = false;
-                        Console.WriteLine("You have exited to the program!");
-                        Console.WriteLine("Press Enter to continue...");
+                    case MenuType.RestaurantMenu:
+                        //This will point the page reference variable to a new Restaurant Object
+                        //Since Restaurant Object has different implementation/function of the Menu Method
+                        //It will change my terminal to reflect that change
+                        page = new RestaurantMenu();
+                        break; 
+                    case MenuType.Exit:
+                        Console.WriteLine("You are exiting the application!");
+                        Console.WriteLine("Press Enter to continue");
                         Console.ReadLine();
+                        repeat = false;
                         break;
                     default:
-                        Console.WriteLine("What the heck did you just type, try again!");
-                        Console.WriteLine("Press Enter to continue...");
-                        Console.ReadLine();
+                        Console.WriteLine("You forgot to add a menu in your enum/code");
+                        repeat = false;
                         break;
                 }
             }
