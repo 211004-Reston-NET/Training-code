@@ -1,6 +1,7 @@
 ﻿using System;
 using CollectionFunction;
 using HouseFunction; //You have to add the namespace from the House class to use the House class
+using Serialize;
 // This is a comment
 
 /*
@@ -52,6 +53,11 @@ namespace HelloWorld
 
             Console.WriteLine("====To String Demo====");
             Console.WriteLine(Stephen);
+
+            Console.WriteLine("==== Serializer Demo ====");
+
+            Serialization serialObj = new Serialization();
+            serialObj.SerialMain();
         }
 
         public static int Example()

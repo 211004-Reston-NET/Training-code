@@ -26,6 +26,8 @@ namespace RRDL
 
             //This is what adds the restaurant.json
             File.WriteAllText(_filepath,_jsonString);
+
+            //Will return a restaurant object from the parameter
             return p_rest;
         }
 

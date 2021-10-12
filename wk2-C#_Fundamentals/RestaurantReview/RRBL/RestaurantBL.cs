@@ -5,6 +5,11 @@ using RRModels;
 
 namespace RRBL
 {
+    /// <summary>
+    /// Handles all the business logic for the our restuarant application
+    /// They are in charge of further processing/sanitizing/furthur validation of data
+    /// Any Logic
+    /// </summary>
     public class RestaurantBL
     {
         private Repository _repo;

@@ -30,8 +30,22 @@ namespace HouseFunction
             } 
         }
 
+        public string Ghost 
+        {
+            get
+            {
+                return ghost;
+            }
+            
+            set
+            {
+                ghost = value;
+            } 
+        }
+
         //Creates a property
         public string MiceName { get; set; }
+
 
         public override string ToString()
         {
