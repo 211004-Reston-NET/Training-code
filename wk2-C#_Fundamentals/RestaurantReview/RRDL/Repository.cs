@@ -22,7 +22,7 @@ namespace RRDL
             //We added the new restaurant from the parameter 
             listOfRestaurants.Add(p_rest);
 
-            _jsonString = JsonSerializer.Serialize(listOfRestaurants);
+            _jsonString = JsonSerializer.Serialize(listOfRestaurants, new JsonSerializerOptions{WriteIndented=true});
 
             //This is what adds the restaurant.json
             File.WriteAllText(_filepath,_jsonString);

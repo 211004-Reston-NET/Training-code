@@ -1,1 +1,22 @@
-[{"City":"Alexandria","State":"Va","Name":"Stephen\u0027s restaurant"},{"City":"Detroit","State":"MI","Name":"Colin\u0027s restaurant"},{"City":"New York","State":"New York","Name":"Joshua"}]
+[
+  {
+    "City": "Alexandria",
+    "State": "Va",
+    "Name": "Stephen\u0027s restaurant"
+  },
+  {
+    "City": "Detroit",
+    "State": "MI",
+    "Name": "Colin\u0027s restaurant"
+  },
+  {
+    "City": "New York",
+    "State": "New York",
+    "Name": "Joshua"
+  },
+  {
+    "City": "Houston",
+    "State": "Texas",
+    "Name": "Armando"
+  }
+]
