@@ -7,8 +7,8 @@ namespace RRUI
 {
     public class ShowRestaurant : IMenu
     {
-        private RestaurantBL _restBL;
-        public ShowRestaurant(RestaurantBL p_restBL)
+        private IRestaurantBL _restBL;
+        public ShowRestaurant(IRestaurantBL p_restBL)
         {
             _restBL = p_restBL;
         }

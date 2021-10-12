@@ -8,7 +8,7 @@ namespace RRDL
 {
     //The repository class has a bunch of methods that we will use to get or store information from the database
     //Does not actually hold the data itself
-    public class Repository
+    public class Repository : IRepository
     {
         //Filepath need to reference from the startup project (RRUI) and hence why we need to go back a folder and cd into RRDL
         private const string _filepath = "./../RRDL/Database/Restaurant.json";
@@ -30,6 +30,7 @@ namespace RRDL
             //Will return a restaurant object from the parameter
             return p_rest;
         }
+
 
         public List<Restaurant> GetAllRestaurant()
         {
