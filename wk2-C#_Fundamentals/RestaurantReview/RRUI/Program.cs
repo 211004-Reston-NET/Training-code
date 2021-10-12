@@ -49,6 +49,9 @@ namespace RRUI
                     case MenuType.ShowRestaurant:
                         page = new ShowRestaurant(new RestaurantBL(new Repository()));
                         break;
+                    case MenuType.AddRestaurant:
+                        page = new AddRestaurant(new RestaurantBL(new Repository()));
+                        break;
                     case MenuType.Exit:
                         Console.WriteLine("You are exiting the application!");
                         Console.WriteLine("Press Enter to continue");

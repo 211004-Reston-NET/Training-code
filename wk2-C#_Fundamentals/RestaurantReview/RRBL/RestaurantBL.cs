@@ -25,6 +25,11 @@ namespace RRBL
             _repo = p_repo;
         }
 
+        public Restaurant AddRestaurant(Restaurant p_rest)
+        {
+            return _repo.AddRestaurant(p_rest);
+        }
+
         public List<Restaurant> GetAllRestaurant()
         {
             //Maybe my business operation needs to capitalize every name of a restaurant

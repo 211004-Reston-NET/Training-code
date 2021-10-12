@@ -1,12 +1,1 @@
-[
-    {
-        "Name": "Stephen's restaurant",
-        "State": "Va",
-        "City": "Alexandria"
-    },
-    {
-        "Name": "Colin's restaurant",
-        "State": "MI",
-        "City": "Detroit"
-    }
-]
+[{"City":"Alexandria","State":"Va","Name":"Stephen\u0027s restaurant"},{"City":"Detroit","State":"MI","Name":"Colin\u0027s restaurant"},{"City":"New York","State":"New York","Name":"Joshua"}]
