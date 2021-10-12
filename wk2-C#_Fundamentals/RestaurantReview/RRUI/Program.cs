@@ -1,4 +1,6 @@
 ﻿using System;
+using RRBL;
+using RRDL;
 
 namespace RRUI
 {
@@ -13,6 +15,7 @@ namespace RRUI
 
             //This is example of polymorphism, abstraction, and inheritance all at the same time
             IMenu page = new MainMenu();
+            
 
             //This is a while loop that will keep repeating until I changed the
             //repeat variable to false
@@ -43,6 +46,9 @@ namespace RRUI
                         //repeat itself
                         page = new RestaurantMenu();
                         break; 
+                    case MenuType.ShowRestaurant:
+                        page = new ShowRestaurant(new RestaurantBL(new Repository()));
+                        break;
                     case MenuType.Exit:
                         Console.WriteLine("You are exiting the application!");
                         Console.WriteLine("Press Enter to continue");

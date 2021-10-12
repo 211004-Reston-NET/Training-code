@@ -32,5 +32,10 @@ namespace HouseFunction
 
         //Creates a property
         public string MiceName { get; set; }
+
+        public override string ToString()
+        {
+            return $"Owner's name: {owner} and ghost's name: {ghost}";
+        }
     }
 }

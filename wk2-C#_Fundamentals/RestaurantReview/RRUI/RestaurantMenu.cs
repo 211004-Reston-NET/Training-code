@@ -8,6 +8,7 @@ namespace RRUI
         {
             Console.WriteLine("Welcome to the Restaurant Menu!");
             Console.WriteLine("What do you want to do?");
+            Console.WriteLine("[3] - List of Restaurant");
             Console.WriteLine("[2] - Checkout");
             Console.WriteLine("[1] - Buy a Product");
             Console.WriteLine("[0] - Go to MainMenu");
@@ -18,6 +19,8 @@ namespace RRUI
             string userChoice = Console.ReadLine();
             switch (userChoice)
             {
+                case "3":
+                    return MenuType.ShowRestaurant;
                 case "2":
                     return MenuType.RestaurantMenu;
                 case "1":

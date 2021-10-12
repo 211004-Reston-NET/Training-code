@@ -49,6 +49,9 @@ namespace HelloWorld
 
             Collection collectionObj = new Collection();
             collectionObj.CollectionMain();
+
+            Console.WriteLine("====To String Demo====");
+            Console.WriteLine(Stephen);
         }
 
         public static int Example()

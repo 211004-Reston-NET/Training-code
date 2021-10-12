@@ -7,6 +7,7 @@ namespace RRUI
     {
         MainMenu,
         RestaurantMenu,
+        ShowRestaurant,
         Exit
     }
 

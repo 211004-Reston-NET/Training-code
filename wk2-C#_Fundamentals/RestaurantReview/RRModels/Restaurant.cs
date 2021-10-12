@@ -27,5 +27,10 @@ namespace RRModels
         public string State { get; set; }
         public string Name { get; set; }
 
+        public override string ToString()
+        {
+            return $"Name: {Name}\nState: {State}";
+        }
+
     }
 }

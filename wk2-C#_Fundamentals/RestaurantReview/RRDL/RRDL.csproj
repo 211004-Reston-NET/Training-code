@@ -2,12 +2,9 @@
 
   <ItemGroup>
     <ProjectReference Include="..\RRModels\RRModels.csproj" />
-    <ProjectReference Include="..\RRBL\RRBL.csproj" />
-    <ProjectReference Include="..\RRDL\RRDL.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
