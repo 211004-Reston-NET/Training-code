@@ -38,7 +38,7 @@
 * Christian Matis
 * Sarah Davis
 
-# Vanquish Team
+# ~~Vanquish~~ Gitr Dun Team
 * Chase Henry
 * David Odhiambo
 * Kat Oakman
@@ -46,7 +46,7 @@
 * Carvell Williams
 * Florencio Gallegos
 
-# Alchemy Team
+# ~~Alchemy~~ TheFullMetalAlchemist Team
 * Michael Mason
 * Justin Smith
 * Nathan Feist
