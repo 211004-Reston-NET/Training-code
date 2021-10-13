@@ -29,7 +29,7 @@
 * Ayoghasaku Agborbesong
 * Ronald McCool
 
-# Git Good Team
+# ~~Amplifier~~ Git Good Team 
 * Colin Mudie
 * Joshua Lopez Ramos
 * Adam Czyryca
