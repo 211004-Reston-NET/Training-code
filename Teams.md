@@ -14,7 +14,12 @@
 
 # Living Document
 * Team objectives they must complete
-* Team objectives might change since it is
+* Team objectives might change since it is a living document
+* Objective 1 - Create a User interface that allows you to add a customer
+   * For now, keep properties that points to another class/object null such as List<class> properties
+   * A new customer shouldn't have pre-existing list of orders anyway (as an example)
+   * You can perhaps initiliaze a new object for that properties is also possible
+   * You don't need to attach it to a json file as of right now (you can if you finished early)
 
 # Synergy Team
 * Daniel Lara
