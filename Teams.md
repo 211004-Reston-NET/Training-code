@@ -12,6 +12,10 @@
    - Those team names is universal meaning each batch in Revature right now is either in Team Synergy, Amplifire, Vanquish, and Alchemy
    - However, you can attach a nickname to it (I prefer you do and be creative like code, compile, and pray Team)
 
+# Living Document
+* Team objectives they must complete
+* Team objectives might change since it is
+
 # Synergy Team
 * Daniel Lara
 * Brian Stiner
