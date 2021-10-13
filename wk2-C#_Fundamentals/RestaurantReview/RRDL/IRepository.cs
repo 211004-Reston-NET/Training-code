@@ -17,5 +17,7 @@ namespace RRDL
         /// </summary>
         /// <returns>It will return a list of restaurants</returns>
         List<Restaurant> GetAllRestaurant();
+
+        List<Review> GetAllReview();
     }
 }

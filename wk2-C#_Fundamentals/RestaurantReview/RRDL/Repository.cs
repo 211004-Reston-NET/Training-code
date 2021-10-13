@@ -11,7 +11,7 @@ namespace RRDL
     public class Repository : IRepository
     {
         //Filepath need to reference from the startup project (RRUI) and hence why we need to go back a folder and cd into RRDL
-        private const string _filepath = "./../RRDL/Database/Restaurant.json";
+        private const string _filepath = "./../RRDL/Database/";
         private string _jsonString;
 
         public Restaurant AddRestaurant(Restaurant p_rest)
@@ -25,7 +25,7 @@ namespace RRDL
             _jsonString = JsonSerializer.Serialize(listOfRestaurants, new JsonSerializerOptions{WriteIndented=true});
 
             //This is what adds the restaurant.json
-            File.WriteAllText(_filepath,_jsonString);
+            File.WriteAllText(_filepath+"Restaurant.json",_jsonString);
 
             //Will return a restaurant object from the parameter
             return p_rest;
@@ -35,12 +35,19 @@ namespace RRDL
         public List<Restaurant> GetAllRestaurant()
         {
             //File class will just read everything in the Resturant.json and put it in a string
-            _jsonString = File.ReadAllText(_filepath);
+            _jsonString = File.ReadAllText(_filepath+"Restaurant.json");
 
             //Since we are converting from a string to an object that C# understands we need to deserialize the string to object.
             //Json Serializer has a static method called Deserialize and thats why you don't need to instantiate it
             //The parameter of the Deserialize method needs a string variable that holds the json file
             return JsonSerializer.Deserialize<List<Restaurant>>(_jsonString);
+        }
+
+        public List<Review> GetAllReview()
+        {
+            _jsonString = File.ReadAllText(_filepath+"Review.json");
+
+            return JsonSerializer.Deserialize<List<Review>>(_jsonString);
         }
     }
 }
