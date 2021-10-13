@@ -30,7 +30,6 @@
 * Ronald McCool
 
 # Git Good Team
-## Amplifier
 * Colin Mudie
 * Joshua Lopez Ramos
 * Adam Czyryca
