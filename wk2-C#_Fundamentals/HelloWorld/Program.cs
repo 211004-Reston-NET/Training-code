@@ -1,6 +1,7 @@
 ﻿using System;
 using CollectionFunction;
 using HouseFunction; //You have to add the namespace from the House class to use the House class
+using OOPFunction;
 using Serialize;
 // This is a comment
 
@@ -58,6 +59,22 @@ namespace HelloWorld
 
             Serialization serialObj = new Serialization();
             serialObj.SerialMain();
+
+            Animal ani1 = new Animal()
+            {
+                Name = "Ron",
+                Color = "Red"
+            };
+            Animal ani2 = new Animal("Stephen");
+            ani1.Speak("Hello");
+            Console.WriteLine(ani1.Name);
+            Console.WriteLine(ani2.Name);
+
+            Dog dog1 = new Dog();
+            dog1.Speak();
+            dog1.Speak("Hello");
+            dog1.Speak("Hello");
+            Console.WriteLine(dog1.Speak2());
         }
 
         public static int Example()
