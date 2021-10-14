@@ -27,6 +27,11 @@ namespace RRBL
 
         public Restaurant AddRestaurant(Restaurant p_rest)
         {
+            if (p_rest.Name == null || p_rest.City == null || p_rest.State == null)
+            {
+                throw new Exception("You must have a value in all of the properties of the restaurant class");
+            }
+
             return _repo.AddRestaurant(p_rest);
         }
 

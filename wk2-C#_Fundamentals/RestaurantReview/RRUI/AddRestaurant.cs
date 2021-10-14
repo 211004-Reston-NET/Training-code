@@ -33,8 +33,20 @@ namespace RRUI
             switch (userChoice)
             {
                 case "4":
-                    //Add implementation to talk to the repository method to add a restaurant
-                    _restBL.AddRestaurant(_rest);
+                    //Anything inside the try block will be catched if an exception has risen
+                    //Laymen's term if a problem has happened while doing this code, it will instead do the catch block
+                    try
+                    {
+                         _restBL.AddRestaurant(_rest);
+                    }
+                    catch (System.Exception)
+                    {
+                        Console.WriteLine("You must input value to all fields above");
+                        Console.WriteLine("Press Enter to continue");
+                        Console.ReadLine();
+                        return MenuType.AddRestaurant;
+                    }
+                    
                     return MenuType.RestaurantMenu;
                 case "3":
                     Console.WriteLine("Type in the value for the Name");
