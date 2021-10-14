@@ -36,8 +36,19 @@ namespace OOPFunction
         } 
     }
 
+    //You can inherit multiple interface but can only inherit one class
+    interface Test
+    {
+        void Speak();
+    }
+
+    class Cat : Animal
+    {
+
+    }
+
     //the : is syntax we use in C# to inherit from a class
-    class Dog : Animal
+    class Dog : Animal, Test
     {
         //Method Overriding
         //It is when we change the implementation/behavior of a previous method from the parent/base class
@@ -70,5 +81,11 @@ namespace OOPFunction
         {
             return "Bark";
         }
+    }
+
+    //Example of multilevel inheritance
+    class Chihuahua : Dog
+    {
+
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using AbstractFunction;
 using CollectionFunction;
 using HouseFunction; //You have to add the namespace from the House class to use the House class
 using OOPFunction;
@@ -75,6 +76,10 @@ namespace HelloWorld
             dog1.Speak("Hello");
             dog1.Speak("Hello");
             Console.WriteLine(dog1.Speak2());
+
+            Console.WriteLine("========== Abstraction Demo ==========");
+            // AbstractionDemo absDemo = new AbstractionDemo(); This will give an error because you can't instantiate an abstract or interface
+            AbstractImplementation absDemo = new AbstractImplementation("test", "test2");
         }
 
         public static int Example()
