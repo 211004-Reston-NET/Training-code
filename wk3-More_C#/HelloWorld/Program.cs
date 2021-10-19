@@ -80,6 +80,15 @@ namespace HelloWorld
             Console.WriteLine("========== Abstraction Demo ==========");
             // AbstractionDemo absDemo = new AbstractionDemo(); This will give an error because you can't instantiate an abstract or interface
             AbstractImplementation absDemo = new AbstractImplementation("test", "test2");
+
+            Console.WriteLine("======== Non-Access Modifer Demo ========");
+            House Brian = new House();
+            House Danny = new House();
+
+            Console.WriteLine($"Brian's Grass: {Brian.Grass}\nDanny's Grass: {Danny.Grass}");
+            Console.WriteLine("Heat wave came into california");
+            Brian.Grass = false;
+            Console.WriteLine($"Brian's Grass: {Brian.Grass}\nDanny's Grass: {Danny.Grass}");
         }
 
         public static int Example()

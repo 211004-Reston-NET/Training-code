@@ -17,14 +17,14 @@ namespace Serialize
             {
                 MiceName = "Mickey Mouse",
                 Owner = "Minnie Mouse",
-                Ghost = "Hairly Headless Nick"
+                // Ghost = "Hairly Headless Nick"
             };
 
             House obj2 = new House()
             {
                 MiceName = "Mighty Mouse",
                 Owner = "Pluto",
-                Ghost = "Ghost Busters"
+                // Ghost = "Ghost Busters"
             };
 
             List<House> listOfHouses = new List<House>();

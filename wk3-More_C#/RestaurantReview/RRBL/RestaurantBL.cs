@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using RRDL;
 using RRModels;
 
@@ -45,6 +46,17 @@ namespace RRBL
             }
 
             return listOfRestaurant;
+        }
+
+        public List<Restaurant> GetRestaurant(string p_name)
+        {
+            List<Restaurant> listOfRestaurant = _repo.GetAllRestaurant();
+            
+            //Select method will give a list of boolean if the condition was true/false
+            //Where method will give the actual element itself based on some condition
+            //ToList method will convert into List that our method currently needs to return.
+            //ToLower will lowercase the string to make it not case sensitive
+            return listOfRestaurant.Where(rest => rest.Name.ToLower().Contains(p_name.ToLower())).ToList();
         }
     }
 }

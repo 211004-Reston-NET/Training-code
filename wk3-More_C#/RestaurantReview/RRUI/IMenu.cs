@@ -9,6 +9,7 @@ namespace RRUI
         RestaurantMenu,
         ShowRestaurant,
         AddRestaurant,
+        CurrentRestaurant,
         Exit
     }
 
