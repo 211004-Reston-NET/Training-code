@@ -24,6 +24,10 @@
    * Use pre-filled json file for now to populate the list of products and worry about adding those products later
    * Just make sure when a user buys the product the amount of quantity of that product decreases
    * You can also choose to hard code a list of products for now just to see if you can decrease its quantity when you test your code
+* Objective 3 - Add search for customer interface
+   * Use [LINQ](https://www.tutorialsteacher.com/linq/what-is-linq) to easily search through a list
+   * The documentation has all the methods you can use to filter things in LINQ
+   * Can also be useful to find certain products/stores
 
 # Synergy Team
 * Daniel Lara
