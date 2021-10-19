@@ -1,12 +1,12 @@
 [
   {
+    "Grass": true,
     "Owner": "Minnie Mouse Owner",
-    "Ghost": "Hairly Headless Nick",
     "MiceName": "Mickey Mouse"
   },
   {
+    "Grass": true,
     "Owner": "Pluto Owner",
-    "Ghost": "Ghost Busters",
     "MiceName": "Mighty Mouse"
   }
 ]

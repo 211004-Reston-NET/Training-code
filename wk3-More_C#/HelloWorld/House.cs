@@ -8,6 +8,15 @@ namespace HouseFunction
         public string owner; 
         private string ghost;
         private int roomCount;
+        // public static bool grass = true;
+
+        private static bool grass = true;
+        public bool Grass
+        {
+            get { return grass; }
+            set { grass = value; }
+        }
+        
 
         public House()
         {
@@ -30,7 +39,7 @@ namespace HouseFunction
             } 
         }
 
-        public string Ghost 
+        protected string Ghost 
         {
             get
             {
