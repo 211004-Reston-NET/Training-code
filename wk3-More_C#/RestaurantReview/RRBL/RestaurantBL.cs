@@ -13,7 +13,7 @@ namespace RRBL
     /// </summary>
     public class RestaurantBL :IRestaurantBL
     {
-        private IRepository _repo;
+        private Repository _repo;
         /// <summary>
         /// We are defining the dependencies this class needs to operate
         /// We do it this way because we can easily switch out which implementation details we will be using
@@ -21,7 +21,7 @@ namespace RRBL
         /// have the implementation
         /// </summary>
         /// <param name="p_repo">It will pass in a Respository object</param>
-        public RestaurantBL(IRepository p_repo)
+        public RestaurantBL(Repository p_repo)
         {
             _repo = p_repo;
         }

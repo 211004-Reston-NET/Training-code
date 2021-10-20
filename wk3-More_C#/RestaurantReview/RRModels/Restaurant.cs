@@ -5,6 +5,13 @@ namespace RRModels
 {
     public class Restaurant
     {
+
+        public Restaurant()
+        {
+            this._city = "City";
+            this.State = "State";
+            this.Name = "Name";
+        }
         //This is a field
         private string _city;
 

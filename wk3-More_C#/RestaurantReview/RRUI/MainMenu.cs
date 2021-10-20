@@ -5,19 +5,25 @@ using System;
 namespace RRUI
 {
     //The ":" syntax is used to indicate that you will inherit another class, interface, or abstract class
-    public class MainMenu : IMenu
+    public class MainMenu : IMenu, IToShow
     {
+
         /*
-            Since MainMenu has inherited IMenu, it will have all the methods we have created
-            in IMenu.
-            This is an example of Inheritance, one of the Object Oriented Pillars
-        */
+   Since MainMenu has inherited IMenu, it will have all the methods we have created
+   in IMenu.
+   This is an example of Inheritance, one of the Object Oriented Pillars
+*/
         public void Menu()
         {
             Console.WriteLine("Welcome to the Main Menu!");
             Console.WriteLine("What do you want to do?");
             Console.WriteLine("[1] - Go to Restaraunt");
             Console.WriteLine("[0] - Exit");
+        }
+
+        public void ThisIsOnlyForMainMenuCFile()
+        {
+            throw new NotImplementedException();
         }
 
         public MenuType YourChoice()
