@@ -1,6 +1,4 @@
 ﻿using System;
-using RRBL;
-using RRDL;
 
 namespace RRUI
 {
@@ -12,10 +10,13 @@ namespace RRUI
             //I will use this to stop the while loop
             bool repeat = true;
 
+            //Moved the creation logic into another class called MenuFactory instead
+            //To follow Single Responsibility Principle
+            IFactory factory = new MenuFactory();
 
             //This is example of polymorphism, abstraction, and inheritance all at the same time
-            IMenu page = new MainMenu();
-            
+            //Example of Covariance
+            IMenu page = factory.GetMenu(MenuType.MainMenu);
 
             //This is a while loop that will keep repeating until I changed the
             //repeat variable to false
@@ -30,44 +31,17 @@ namespace RRUI
                 page.Menu();
                 MenuType currentPage = page.YourChoice();
 
-                //switch case will change the page variable to point to another object to change
-                //its MainMenu 
-                switch (currentPage)
+                if (currentPage == MenuType.Exit)
                 {
-                    case MenuType.MainMenu:
-                        //If user choosed to go back to the MainMenu
-                        //page will start pointing to a MainMenu object instead
-                        page = new MainMenu();
-                        break;
-                    case MenuType.RestaurantMenu:
-                        //This will point the page reference variable to a new Restaurant Object
-                        //Since Restaurant Object has different implementation/function of the Menu Method
-                        //It will have different implementations/functions when the while loop goes back and
-                        //repeat itself
-                        page = new RestaurantMenu();
-                        break; 
-                    case MenuType.ShowRestaurant:
-                        page = new ShowRestaurant(new RestaurantBL(new Repository()));
-                        break;
-                    case MenuType.AddRestaurant:
-                        page = new AddRestaurant(new RestaurantBL(new Repository()));
-                        break;
-                    case MenuType.CurrentRestaurant:
-                        page = new CurrentRestaurant(new RestaurantBL(new Repository()));
-                        break;
-                    case MenuType.Exit:
-                        Console.WriteLine("You are exiting the application!");
-                        Console.WriteLine("Press Enter to continue");
-                        Console.ReadLine();
-                        repeat = false;
-                        break;
-                    default:
-                        Console.WriteLine("You forgot to add a menu in your enum/code");
-                        repeat = false;
-                        break;
+                    Console.WriteLine("You are exiting the application!");
+                    Console.WriteLine("Press Enter to continue");
+                    Console.ReadLine();
+                    repeat = false;
                 }
-
-                
+                else
+                {
+                    page = factory.GetMenu(currentPage);
+                }
             }
 
         }

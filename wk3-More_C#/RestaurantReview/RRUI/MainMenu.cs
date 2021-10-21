@@ -5,7 +5,7 @@ using System;
 namespace RRUI
 {
     //The ":" syntax is used to indicate that you will inherit another class, interface, or abstract class
-    public class MainMenu : IMenu, IToShow
+    public class MainMenu : IMenu
     {
 
         /*
