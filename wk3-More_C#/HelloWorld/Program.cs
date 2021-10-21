@@ -89,6 +89,9 @@ namespace HelloWorld
             Console.WriteLine("Heat wave came into california");
             Brian.Grass = false;
             Console.WriteLine($"Brian's Grass: {Brian.Grass}\nDanny's Grass: {Danny.Grass}");
+
+            Console.WriteLine("============= Variance Demo =============");
+            VarianceFunction.Variance.VarianceMain();
         }
 
         public static int Example()
