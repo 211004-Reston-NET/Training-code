@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
 namespace RRModels
@@ -33,6 +34,8 @@ namespace RRModels
 
         public string State { get; set; }
         public string Name { get; set; }
+
+        public List<Review> Reviews { get; set; }
 
         public override string ToString()
         {
