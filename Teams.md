@@ -29,7 +29,7 @@
    * The documentation has all the methods you can use to filter things in LINQ
    * Can also be useful to find certain products/stores
 
-# Synergy Team
+# ~~Synergy~~ Appsassians Team
 * Daniel Lara
 * Brian Stiner
 * Oscar Cerna
