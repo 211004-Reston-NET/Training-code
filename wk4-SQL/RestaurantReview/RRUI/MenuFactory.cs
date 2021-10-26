@@ -1,5 +1,9 @@
+using System.IO;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using RRBL;
 using RRDL;
+using RRDL.Entities;
 
 namespace RRUI
 {
@@ -10,6 +14,15 @@ namespace RRUI
     {
         public IMenu GetMenu(MenuType p_menu)
         {
+            var configuration = new ConfigurationBuilder() //Configurationbuilder is the class that came from the Microsoft.extensions.configuration package
+                .SetBasePath(Directory.GetCurrentDirectory()) //Gets the current directory of the RRUI file path
+                .AddJsonFile("appsetting.json") //Adds the appsetting.json file in our RRUI
+                .Build(); //Builds our configuration
+
+            DbContextOptions<RRDatabaseContext> options = new DbContextOptionsBuilder<RRDatabaseContext>()
+                .UseSqlServer(configuration.GetConnectionString("Reference2DB"))
+                .Options;
+
             switch (p_menu)
             {
                 case MenuType.MainMenu:
@@ -17,11 +30,11 @@ namespace RRUI
                 case MenuType.RestaurantMenu:
                     return new RestaurantMenu();
                 case MenuType.ShowRestaurant:
-                    return new ShowRestaurant(new RestaurantBL(new Repository()));
+                    return new ShowRestaurant(new RestaurantBL(new RespositoryCloud(new RRDatabaseContext(options))));
                 case MenuType.AddRestaurant:
-                    return new AddRestaurant(new RestaurantBL(new Repository()));
+                    return new AddRestaurant(new RestaurantBL(new RespositoryCloud(new RRDatabaseContext(options))));
                 case MenuType.CurrentRestaurant:
-                    return new CurrentRestaurant(new RestaurantBL(new Repository()));
+                    return new CurrentRestaurant(new RestaurantBL(new RespositoryCloud(new RRDatabaseContext(options))));
                 default:
                     return null;
             }
