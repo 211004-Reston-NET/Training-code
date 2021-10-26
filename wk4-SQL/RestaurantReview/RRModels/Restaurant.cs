@@ -13,6 +13,9 @@ namespace RRModels
             this.State = "State";
             this.Name = "Name";
         }
+
+        public int Id { get; set; }
+        
         //This is a field
         private string _city;
 
