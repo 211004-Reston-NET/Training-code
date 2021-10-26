@@ -1,4 +1,6 @@
 //Sets the house class to be under the HouseFunction namespace
+using System;
+
 namespace HouseFunction
 {
     //public will make this class available for all
@@ -54,6 +56,11 @@ namespace HouseFunction
 
         //Creates a property
         public string MiceName { get; set; }
+
+        public void test(string? test = "")
+        {
+            Console.WriteLine(test);
+        }
 
 
         public override string ToString()

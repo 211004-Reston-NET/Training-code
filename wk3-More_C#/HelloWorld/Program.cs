@@ -40,6 +40,8 @@ namespace HelloWorld
             Stephen.MiceName = "Jerry";
             Stephen.Owner = "Colin";
 
+            Stephen.test();
+
             //We displayed those changed values into the terminal
             Console.WriteLine(Stephen.MiceName);
             Console.WriteLine(Stephen.Owner);
