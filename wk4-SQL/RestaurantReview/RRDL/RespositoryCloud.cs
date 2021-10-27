@@ -106,13 +106,13 @@ namespace RRDL
 
             //Method Syntax - since this looks cleaner
             return _context.Reviews
-                .Where(rev => rev.RevId == p_rest.Id)
-                .Select(rev => new Model.Review(){
+                .Where(rev => rev.RevId == p_rest.Id) //We find the reviews that have matching restId
+                .Select(rev => new Model.Review(){ //Convert it into Model.Review
                   Id = rev.RevId,
                   Rating = rev.RevRating,
                   Restaurant = p_rest
                 })
-                .ToList();
+                .ToList(); //Convert it into List
         }
     }
 }
