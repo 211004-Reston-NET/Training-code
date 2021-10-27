@@ -71,7 +71,16 @@ namespace RRDL
                 Id = restToFind.RestId,
                 Name = restToFind.RestName,
                 State = restToFind.RestState,
-                City = restToFind.RestCity
+                City = restToFind.RestCity,
+                //This is the super ugly code that I avoided during demo that you need right now
+                //So if you are lazy instead of doing a mapper class
+                //This is all you need to do
+                //Select statement to convert each element to Model.Review
+                //ToList to convert it into a List collection instead of IEnumerable
+                Reviews = restToFind.Reviews.Select(rev => new Model.Review(){ 
+                    Id = rev.RevId,
+                    Rating = rev.RevRating
+                }).ToList()
             };
         }
 

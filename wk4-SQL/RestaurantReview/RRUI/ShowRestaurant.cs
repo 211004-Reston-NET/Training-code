@@ -8,7 +8,7 @@ namespace RRUI
     public class ShowRestaurant : IMenu
     {
         private IRestaurantBL _restBL;
-        public static string _findRestName;
+        public static Restaurant _findRestName = new Restaurant();
         public ShowRestaurant(IRestaurantBL p_restBL)
         {
             _restBL = p_restBL;
@@ -25,6 +25,7 @@ namespace RRUI
                 Console.WriteLine("====================");
             }
             Console.WriteLine("[1] - Search for a restaurant");
+            Console.WriteLine("[2] - Select Restaurant based on Id");
             Console.WriteLine("[0] - Go Back");
         }
 
@@ -37,8 +38,24 @@ namespace RRUI
                     return MenuType.RestaurantMenu;
                 case "1":
                     Console.WriteLine("Enter a name for the Restaurant you want to find");
-                    _findRestName = Console.ReadLine();
+                    _findRestName.Name = Console.ReadLine();
                     return MenuType.CurrentRestaurant;
+                case "2":
+                    Console.WriteLine("Enter the ID of the restaurant you want to find");
+
+                    try
+                    {
+                         _findRestName.Id = Int32.Parse(Console.ReadLine());
+                    }
+                    catch (System.Exception)
+                    {
+                        Console.WriteLine("Please put in a number!");
+                        Console.WriteLine("Please press Enter to continue");
+                        Console.ReadLine();
+                        return MenuType.ShowRestaurant;
+                    }
+
+                    return MenuType.ReviewMenu;
                 default:
                     Console.WriteLine("Please input a valid response!");
                     Console.WriteLine("Press Enter to continue");

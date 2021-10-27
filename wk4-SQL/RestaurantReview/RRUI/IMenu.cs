@@ -10,6 +10,7 @@ namespace RRUI
         ShowRestaurant,
         AddRestaurant,
         CurrentRestaurant,
+        ReviewMenu,
         Exit
     }
 

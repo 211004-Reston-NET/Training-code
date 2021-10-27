@@ -6,5 +6,10 @@ namespace RRModels
         public int Rating { get; set; }
         public int RestId { get; set; }
         public Restaurant Restaurant { get; set; }
+
+        public override string ToString()
+        {
+            return $"Rating: {Rating}";
+        }
     }
 }

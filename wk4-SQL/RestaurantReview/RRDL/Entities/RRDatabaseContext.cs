@@ -34,16 +34,19 @@ namespace RRDL.Entities
                 entity.Property(e => e.RestId).HasColumnName("rest_id");
 
                 entity.Property(e => e.RestCity)
+                    .IsRequired()
                     .HasMaxLength(50)
                     .IsUnicode(false)
                     .HasColumnName("rest_city");
 
                 entity.Property(e => e.RestName)
+                    .IsRequired()
                     .HasMaxLength(50)
                     .IsUnicode(false)
                     .HasColumnName("rest_name");
 
                 entity.Property(e => e.RestState)
+                    .IsRequired()
                     .HasMaxLength(50)
                     .IsUnicode(false)
                     .HasColumnName("rest_state");
@@ -65,6 +68,7 @@ namespace RRDL.Entities
                 entity.HasOne(d => d.Rest)
                     .WithMany(p => p.Reviews)
                     .HasForeignKey(d => d.RestId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__Review__rest_id__01142BA1");
             });
 

@@ -5,23 +5,22 @@ using RRModels;
 
 namespace RRUI
 {
-    public class CurrentRestaurant : IMenu
+    public class ReviewMenu : IMenu
     {
         private IRestaurantBL _restBL;
-        public CurrentRestaurant(IRestaurantBL p_restBL)
+        public ReviewMenu(IRestaurantBL p_restBL)
         {
             this._restBL = p_restBL;
         }
-
         public void Menu()
         {
-            List<Restaurant> listOfRest = _restBL.GetRestaurant(ShowRestaurant._findRestName.Name);
+            Console.WriteLine("List of Reviews");
+            List<Review> listOfReview = _restBL.GetAllReview(ShowRestaurant._findRestName);
 
-            Console.WriteLine("This is the search result");
-            foreach (Restaurant rest in listOfRest)
+            foreach (Review rev in listOfReview)
             {
                 Console.WriteLine("====================");
-                Console.WriteLine(rest);
+                Console.WriteLine(rev);
                 Console.WriteLine("====================");
             }
             Console.WriteLine("[0] - Go Back");
@@ -30,7 +29,6 @@ namespace RRUI
         public MenuType YourChoice()
         {
             string userChoice = Console.ReadLine();
-
             switch (userChoice)
             {
                 case "0":
@@ -39,7 +37,7 @@ namespace RRUI
                     Console.WriteLine("Please input a valid response!");
                     Console.WriteLine("Press Enter to continue");
                     Console.ReadLine();
-                    return MenuType.CurrentRestaurant;
+                    return MenuType.ReviewMenu;
             }
         }
     }

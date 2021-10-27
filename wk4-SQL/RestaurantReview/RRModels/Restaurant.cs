@@ -42,7 +42,7 @@ namespace RRModels
 
         public override string ToString()
         {
-            return $"Name: {Name}\nState: {State}";
+            return $"ID: {Id}\nName: {Name}\nState: {State}";
         }
 
     }
