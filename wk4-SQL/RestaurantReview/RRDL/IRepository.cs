@@ -18,6 +18,17 @@ namespace RRDL
         /// <returns>It will return a list of restaurants</returns>
         List<Restaurant> GetAllRestaurant();
 
-        List<Review> GetAllReview();
+        /// <summary>
+        /// This will give all the reviews from a restaurant
+        /// </summary>
+        /// <returns>It will return a list of reviews</returns>
+        List<Review> GetAllReview(Restaurant p_rest);
+
+        /// <summary>
+        /// This will give a specific restaurant based on the ID
+        /// </summary>
+        /// <param name="p_id">This is the ID it will look for</param>
+        /// <returns>Returns the resturant it found</returns>
+        Restaurant GetRestaurantById(int p_id);
     }
 }
