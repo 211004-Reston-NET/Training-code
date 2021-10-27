@@ -48,6 +48,11 @@ namespace RRBL
             return listOfRestaurant;
         }
 
+        public List<Review> GetAllReview(Restaurant p_rest)
+        {
+            return _repo.GetAllReview(p_rest);
+        }
+
         public List<Restaurant> GetRestaurant(string p_name)
         {
             List<Restaurant> listOfRestaurant = _repo.GetAllRestaurant();
@@ -58,5 +63,19 @@ namespace RRBL
             //ToLower will lowercase the string to make it not case sensitive
             return listOfRestaurant.Where(rest => rest.Name.ToLower().Contains(p_name.ToLower())).ToList();
         }
+
+        public Restaurant GetRestaurantById(int p_Id)
+        {
+            Restaurant restFound = _repo.GetRestaurantById(p_Id);
+
+            if (restFound == null)
+            {
+                throw new Exception("Restaurant was not found!");
+            }
+
+            return restFound;
+        }
+
+        
     }
 }
