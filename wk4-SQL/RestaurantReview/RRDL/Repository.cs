@@ -72,5 +72,15 @@ namespace RRDL
 
             return JsonSerializer.Deserialize<List<Review>>(_jsonString);
         }
+
+        public List<Review> GetAllReview(Restaurant p_rest)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Restaurant GetRestaurantById(int p_id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
