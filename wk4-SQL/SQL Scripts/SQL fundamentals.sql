@@ -45,8 +45,8 @@ create table heart(
 	person_SSN int unique foreign key references person(SSN) --This will automatically fill in some auto generate named for the foreign key
 )
 
-insert into heart(heart_size, heart_healthy, person_SSN)
-	values (50, 0, 2) --Cannot add another heart to Colin which has an SSN of 2
+insert into heart(heart_size, heart_healthy)
+	values (1000, 1) --Cannot add another heart to Colin which has an SSN of 2
 
 --One to Many Relationship
 create table person
@@ -74,9 +74,12 @@ insert into person(SSN, person_name, person_age)
 	values(1, 'Adam', 24),
 		(2, 'Colin', 26)
 		
+insert into person(SSN, person_name, person_age)
+	values(5, 'Pinky', 10)
+		
 insert into fingers(finger_length, finger_type, person_SSN)
-	values(3, 'Pointy finger', 2),
-		(1, 'Pinky finger', 1)
+	values(3, 'Pinky', 2)
+
 
 --Many to Many relationship
 create table class(
@@ -117,7 +120,63 @@ where p.SSN = 1 -- In this case, I'm looking for a person_SSN instead
 -- Overall these inner joins just select data from the many to many relationship into one to many relationship that SQL understands
 
 
---Quick example of inner joins
-select p.person_name, f.finger_type from person p
-inner join fingers f on p.SSN = f.person_SSN 
-		
+--------------------- Joins ---------------------
+
+--Example of inner join
+select * from person p
+inner join heart h on p.SSN = h.person_SSN 
+
+--Example of left join
+select * from person p 
+left join heart h on p.SSN = h.person_SSN 
+
+--Example of right join
+select * from person p 
+right join heart h on p.SSN = h.person_SSN 
+
+--Example of full join
+select * from person p 
+full join heart h on p.SSN = h.person_SSN
+
+--Example of cross join
+select * from person p 
+cross join heart h
+
+----------------- Subquery ---------------------
+
+--Old way
+select avg(p.person_age) from person p 
+
+--How do we select every person that is above the average when using the aggregate function avg()
+select * from person
+where person_age > 24
+
+--Subquery way
+select * from person
+where person_age > (
+	select avg(person_age) from person
+)
+
+--------------------- Union ---------------------
+
+--Two query statements must have the same # of columns and same datatypes
+--Example of Union
+select p.person_name from person p
+union
+select f.finger_type from fingers f 
+
+--Example of Union All
+select p.person_name from person p
+union all
+select f.finger_type from fingers f 
+
+--Example of Except
+select f.finger_type from fingers f
+except
+select p.person_name from person p 
+
+--Example of Intersect
+select f.finger_type from fingers f
+intersect
+select p.person_name from person p 
+
