@@ -40,11 +40,15 @@ namespace RRUI
                     Console.WriteLine("Enter the Review Id you want to change");
                     try
                     {
+                        //Selects one of the review
                         int revId = Int32.Parse(Console.ReadLine());
                         Review revFound = _revBL.GetReviewById(revId);
 
+                        //Asks how much you want to add to the rating
                         Console.WriteLine("Input how much you want to add to the rating");
                         int addedRating = Int32.Parse(Console.ReadLine());
+
+                        //Business layer UpdateReview method will update the rating
                         _revBL.UpdateReview(revFound, addedRating);
                     }
                     catch (System.FormatException)

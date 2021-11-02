@@ -133,15 +133,20 @@ namespace RRDL
 
         public Model.Review UpdateReview(Model.Review p_rev)
         {
-            Entity.Review revUpdated = new Entity.Review()
+            //Converts Model Review into Entity Review
+            Entity.Review revUpdated = new Entity.Review() 
             {
                 RevId = p_rev.Id,
                 RevRating = p_rev.Rating,
                 RestId = p_rev.RestId
             };
 
+            //Updates the Entity Review based on the current Id it has
+            //Checks other properties of entity to see if they changed
+            //If they changed it will update it
             _context.Reviews.Update(revUpdated);
 
+            //Save the changes of the review
             _context.SaveChanges();
 
             return p_rev;

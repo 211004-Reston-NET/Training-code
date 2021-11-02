@@ -17,7 +17,9 @@ namespace RRBL
 
         public Review UpdateReview(Review p_rev, int p_howMuchAdded)
         {
-            p_rev.Rating += p_howMuchAdded;
+            //Changes the rating property of my review 
+            //and add it based on p_howMuchAdded parameter
+            p_rev.Rating += p_howMuchAdded; 
 
             return _repo.UpdateReview(p_rev);
         }
