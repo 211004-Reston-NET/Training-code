@@ -9,7 +9,7 @@ namespace RRModels
 
         public override string ToString()
         {
-            return $"Rating: {Rating}";
+            return $"Id: {Id}\nRating: {Rating}";
         }
     }
 }

@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
+using RRModels;
 using Entity = RRDL.Entities;
 using Model = RRModels;
 
@@ -113,6 +115,36 @@ namespace RRDL
                   Restaurant = p_rest
                 })
                 .ToList(); //Convert it into List
+        }
+
+        public Model.Review GetReviewById(int p_id)
+        {
+            Entity.Review revFound = _context.Reviews
+                                        .AsNoTracking() //This makes it so it stops tracking the entity once it finds the review
+                                        .FirstOrDefault(rev => rev.RevId == p_id);
+
+            return new Model.Review()
+            {
+                Id = revFound.RevId,
+                Rating = revFound.RevRating,
+                RestId = revFound.RestId
+            };
+        }
+
+        public Model.Review UpdateReview(Model.Review p_rev)
+        {
+            Entity.Review revUpdated = new Entity.Review()
+            {
+                RevId = p_rev.Id,
+                RevRating = p_rev.Rating,
+                RestId = p_rev.RestId
+            };
+
+            _context.Reviews.Update(revUpdated);
+
+            _context.SaveChanges();
+
+            return p_rev;
         }
     }
 }

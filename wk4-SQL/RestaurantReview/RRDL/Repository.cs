@@ -82,5 +82,15 @@ namespace RRDL
         {
             throw new NotImplementedException();
         }
+
+        public Review GetReviewById(int p_id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Review UpdateReview(Review p_rev)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

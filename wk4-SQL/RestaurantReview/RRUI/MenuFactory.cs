@@ -36,7 +36,8 @@ namespace RRUI
                 case MenuType.CurrentRestaurant:
                     return new CurrentRestaurant(new RestaurantBL(new RespositoryCloud(new RRDatabaseContext(options))));
                 case MenuType.ReviewMenu:
-                    return new ReviewMenu(new RestaurantBL(new RespositoryCloud(new RRDatabaseContext(options))));
+                    return new ReviewMenu(new RestaurantBL(new RespositoryCloud(new RRDatabaseContext(options))), 
+                                            new ReviewBL(new RespositoryCloud(new RRDatabaseContext(options))));
                 default:
                     return null;
             }
