@@ -15,19 +15,7 @@
 # Living Document
 * Team objectives they must complete
 * Team objectives might change since it is a living document
-* Objective 1 - Create a User interface that allows you to add a customer
-   * For now, keep properties that points to another class/object null such as List<class> properties
-   * A new customer shouldn't have pre-existing list of orders anyway (as an example)
-   * You can perhaps initiliaze a new object for that properties is also possible
-   * You don't need to attach it to a json file as of right now (you can if you finished early)
-* Objective 2 - Create a store interface that shows a list of products and customer can choose a product to buy
-   * Use pre-filled json file for now to populate the list of products and worry about adding those products later
-   * Just make sure when a user buys the product the amount of quantity of that product decreases
-   * You can also choose to hard code a list of products for now just to see if you can decrease its quantity when you test your code
-* Objective 3 - Add search for customer interface
-   * Use [LINQ](https://www.tutorialsteacher.com/linq/what-is-linq) to easily search through a list
-   * The documentation has all the methods you can use to filter things in LINQ
-   * Can also be useful to find certain products/stores
+* Objective 1 - Update project to be a code-first approach
 
 # ~~Synergy~~ Appsassians Team
 * Daniel Lara
