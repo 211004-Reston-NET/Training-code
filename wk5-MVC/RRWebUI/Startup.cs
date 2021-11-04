@@ -1,9 +1,11 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using RRDL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,8 +23,11 @@ namespace RRWebUI
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
+        // This method will essentailly tell this MVC app what projects it will depend on 
+        // Note: Cool thing about this is that it essentially will do MenuFactory for us
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<RRDatabaseContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Reference2DB")));
             services.AddControllersWithViews();
         }
 

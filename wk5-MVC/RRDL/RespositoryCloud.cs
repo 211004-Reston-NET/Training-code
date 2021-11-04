@@ -1,29 +1,20 @@
 using System.Collections.Generic;
 using System.Linq;
-using Entity = RRDL.Entities;
-using Model = RRModels;
+using RRModels;
 
 namespace RRDL
 {
     public class RespositoryCloud : IRepository
     {
-        private Entity.RRDatabaseContext _context;
-        public RespositoryCloud(Entity.RRDatabaseContext p_context) 
+        private RRDatabaseContext _context;
+        public RespositoryCloud(RRDatabaseContext p_context) 
         {
             _context = p_context;
         }
 
-        public Model.Restaurant AddRestaurant(Model.Restaurant p_rest)
+        public Restaurant AddRestaurant(Restaurant p_rest)
         {
-            _context.Restaurants.Add
-            (
-                new Entity.Restaurant()
-                {
-                    RestName = p_rest.Name,
-                    RestCity = p_rest.City,
-                    RestState = p_rest.State
-                }
-            );
+            _context.Restaurants.Add(p_rest);
 
             //This method will save the changes made to the database
             _context.SaveChanges();
@@ -31,18 +22,10 @@ namespace RRDL
             return p_rest;
         }
 
-        public List<Model.Restaurant> GetAllRestaurant()
+        public List<Restaurant> GetAllRestaurant()
         {
             //Method Syntax
-            return _context.Restaurants.Select(rest => 
-                new Model.Restaurant()
-                {
-                    Name = rest.RestName,
-                    State = rest.RestState,
-                    City = rest.RestCity,
-                    Id = rest.RestId
-                }
-            ).ToList();
+            return _context.Restaurants.ToList();
 
 
             //Query Syntax
@@ -63,28 +46,12 @@ namespace RRDL
             // return listOfRest;
         }
 
-        public Model.Restaurant GetRestaurantById(int p_id)
+        public Restaurant GetRestaurantById(int p_id)
         {
-            Entity.Restaurant restToFind = _context.Restaurants.Find(p_id);
-            
-            return new Model.Restaurant(){
-                Id = restToFind.RestId,
-                Name = restToFind.RestName,
-                State = restToFind.RestState,
-                City = restToFind.RestCity,
-                //This is the super ugly code that I avoided during demo that you need right now
-                //So if you are lazy instead of doing a mapper class
-                //This is all you need to do
-                //Select statement to convert each element to Model.Review
-                //ToList to convert it into a List collection instead of IEnumerable
-                Reviews = restToFind.Reviews.Select(rev => new Model.Review(){ 
-                    Id = rev.RevId,
-                    Rating = rev.RevRating
-                }).ToList()
-            };
+            return _context.Restaurants.Find(p_id);
         }
 
-        public List<Model.Review> GetAllReview(Model.Restaurant p_rest)
+        public List<Review> GetAllReview(Restaurant p_rest)
         {
             //Query syntax
             // var result = (from rev in _context.Reviews
@@ -106,12 +73,7 @@ namespace RRDL
 
             //Method Syntax - since this looks cleaner
             return _context.Reviews
-                .Where(rev => rev.RevId == p_rest.Id) //We find the reviews that have matching restId
-                .Select(rev => new Model.Review(){ //Convert it into Model.Review
-                  Id = rev.RevId,
-                  Rating = rev.RevRating,
-                  Restaurant = p_rest
-                })
+                .Where(rev => rev.RestId == p_rest.Id) //We find the reviews that have matching restId
                 .ToList(); //Convert it into List
         }
     }
