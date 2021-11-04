@@ -1,0 +1,26 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@* This tells you that this view will expect to retrieve a list of RestaurantVM *@
+@model IEnumerable<RRWebUI.Models.RestaurantVM>
+
+<h1>List of Restaurants</h1>
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>City</th>
+        <th>State</th>
+    </tr>
+    @foreach(RestaurantVM item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.Name)</td>
+            <td>@Html.DisplayFor(modelItem => item.City)</td>
+            <td>@Html.DisplayFor(modelItem => item.State)</td>
+        </tr>
+    }
+</table>

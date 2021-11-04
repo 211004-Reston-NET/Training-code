@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using RRBL;
 using RRDL;
 using System;
 using System.Collections.Generic;
@@ -28,6 +29,8 @@ namespace RRWebUI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<RRDatabaseContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Reference2DB")));
+            services.AddScoped<IRestaurantBL, RestaurantBL>();
+            services.AddScoped<IRepository, RespositoryCloud>();
             services.AddControllersWithViews();
         }
 
