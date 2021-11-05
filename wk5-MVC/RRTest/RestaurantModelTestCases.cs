@@ -4,7 +4,7 @@ using Xunit;
 
 namespace RRTest
 {
-    public class UnitTest1
+    public class RestaurantModelTestCases
     {
         /// <summary>
         /// Will test if the city property will set with valid data
