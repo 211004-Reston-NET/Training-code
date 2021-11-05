@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RRBL;
+using RRModels;
 using RRWebUI.Models;
 using System;
 using System.Collections.Generic;
@@ -29,32 +30,39 @@ namespace RRWebUI.Controllers
             );
         }
 
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(RestaurantVM restVM)
+        {
+            //This if statement will check if the current model that is being passed through is valid
+            //If not, the asp-validation-for attribute elements will appear and autofill in the proper feedback for the user 
+            //to correct themselves
+            if (ModelState.IsValid)
+            {
+                _restBL.AddRestaurant(new Restaurant()
+                {
+                    Name = restVM.Name,
+                    City = restVM.City,
+                    State = restVM.State
+                });
+
+                return RedirectToAction(nameof(Index));
+            }
+
+            //Will return back to the create view if the user didn't specify the right input
+            return View();
+        }
+
         // GET: RestaurantController/Details/5
         public ActionResult Details(int id)
         {
             return View();
-        }
-
-        // GET: RestaurantController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: RestaurantController/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        } 
 
         // GET: RestaurantController/Edit/5
         public ActionResult Edit(int id)
