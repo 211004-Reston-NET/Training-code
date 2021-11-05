@@ -15,6 +15,7 @@ namespace RRTest
                         .UseSqlite("Filename = Test.db").Options; //UseSqlite() method will create an inmemory database for use named Test.db
             Seed();
         }
+
         [Fact]
         public void GetAllRestaurantShouldReturnAllRestaurant()
         {
@@ -24,11 +25,43 @@ namespace RRTest
                 IRepository repo = new RespositoryCloud(context);
 
                  //Act
-                 var test = repo.GetAllRestaurant();
+                 List<Restaurant> test = repo.GetAllRestaurant();
 
                  //Assert
                  Assert.Equal(2, test.Count);
                  Assert.Equal("Stephen Restaurant", test[0].Name);
+            }
+        }
+
+        [Fact]
+        public void AddRestaurantShouldAddARestaurant()
+        {
+            //First using block will add a restaruant
+            using (var context = new RRDatabaseContext(_options))
+            {
+                 //Arrange
+                IRepository repo = new RespositoryCloud(context);
+                Restaurant addedRest = new Restaurant
+                {
+                    Name = "Colin Restaurant",
+                    City = "Dallas",
+                    State = "Texas"
+                };
+
+                 //Act
+                 repo.AddRestaurant(addedRest);
+            }
+
+            //Second using block will find that restaurant and see if it is similar to what we added
+            //Assert
+            using (RRDatabaseContext contexts = new RRDatabaseContext(_options))
+            {
+                Restaurant result = contexts.Restaurants.Find(3);
+
+                Assert.NotNull(result);
+                Assert.Equal("Colin Restaurant", result.Name);
+                Assert.Equal("Dallas", result.City);
+                Assert.Equal("Texas", result.State);
             }
         }
 
