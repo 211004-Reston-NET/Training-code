@@ -1,0 +1,37 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@* This tells you that this view will expect to retrieve a list of RestaurantVM *@
+@model IEnumerable<RRWebUI.Models.RestaurantVM>
+
+<h1 class="display-4">List of Restaurants</h1>
+
+<a class="btn btn-primary text-white" asp-controller="Restaurant" asp-action="Create">Add Restaurant</a>
+<br/> <!-- This br tag will space between elements -->
+<br />
+
+<table class="table table-striped table-hover">
+    <tr>
+        <th>Name</th>
+        <th>City</th>
+        <th>State</th>
+        <th></th>
+    </tr>
+    @foreach(RestaurantVM item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.Name)</td>
+            <td>@Html.DisplayFor(modelItem => item.City)</td>
+            <td>@Html.DisplayFor(modelItem => item.State)</td>
+            <td>
+                <!--First parameter of ActionLink is the name it will give for this element -->
+                <!--Second parameter will point to the action of the restaurant controller-->
+                <!--Third parameter will give the information from the view to the controller-->
+                <button class="btn btn-danger">@Html.ActionLink("Delete","Delete",new {p_id = item.Id}, new {@style="color: white;"})</button>
+            </td>
+        </tr>
+    }
+</table>
