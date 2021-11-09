@@ -18,6 +18,23 @@ namespace RRTest
         }
 
         [Fact]
+        public void GetReviewsByRestIdShouldWork()
+        {
+            using (var context = new RRDatabaseContext(_options))
+            {
+                //Arrange
+                IRepository repo = new RespositoryCloud(context);
+
+                //Act
+                List<Review> listOfRevs = repo.GetAllReviewByRestId(1);
+
+                //Assert
+                Assert.Equal(2, listOfRevs.Count);
+                Assert.Equal(4, listOfRevs[0].Rating);
+            }
+        }
+
+        [Fact]
         public void GetAllRestaurantShouldReturnAllRestaurant()
         {
             using (var context = new RRDatabaseContext(_options))
