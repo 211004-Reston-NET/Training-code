@@ -1,0 +1,9 @@
+**/bin
+**/obj
+.git
+.gitignore
+.vs
+.vscode
+Notes.docx
+~$Notes.docx
+~WRL0005.tmp
