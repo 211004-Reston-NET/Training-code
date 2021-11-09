@@ -82,6 +82,11 @@ namespace RRDL
             throw new NotImplementedException();
         }
 
+        public List<Review> GetAllReviewByRestId(int p_id)
+        {
+            throw new NotImplementedException();
+        }
+
         public Restaurant GetRestaurantById(int p_id)
         {
             throw new NotImplementedException();

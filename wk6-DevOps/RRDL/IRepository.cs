@@ -25,6 +25,13 @@ namespace RRDL
         List<Review> GetAllReview(Restaurant p_rest);
 
         /// <summary>
+        /// This will return the reviews of a restaurant based on an rest Id
+        /// </summary>
+        /// <param name="p_id">This is the rest Id</param>
+        /// <returns>Returns the list of reviews associated to that rest Id</returns>
+        List<Review> GetAllReviewByRestId(int p_id);
+
+        /// <summary>
         /// This will give a specific restaurant based on the ID
         /// </summary>
         /// <param name="p_id">This is the ID it will look for</param>

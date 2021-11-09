@@ -105,5 +105,12 @@ namespace RRDL
             _context.SaveChanges();
             return p_rest;
         }
+
+        public List<Review> GetAllReviewByRestId(int p_id)
+        {
+            return _context.Reviews
+                    .Where(rev => rev.RestId == p_id)
+                    .ToList();
+        }
     }
 }
