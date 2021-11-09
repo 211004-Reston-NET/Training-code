@@ -30,6 +30,7 @@ namespace RRWebUI
         {
             services.AddDbContext<RRDatabaseContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Reference2DB")));
             services.AddScoped<IRestaurantBL, RestaurantBL>();
+            services.AddScoped<IReviewBL, ReviewBL>();
             services.AddScoped<IRepository, RespositoryCloud>();
 
             services.AddControllersWithViews().AddRazorRuntimeCompilation();

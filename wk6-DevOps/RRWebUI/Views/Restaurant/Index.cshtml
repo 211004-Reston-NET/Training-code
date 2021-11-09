@@ -31,6 +31,7 @@
                 <!--Second parameter will point to the action of the restaurant controller-->
                 <!--Third parameter will give the information from the view to the controller-->
                 <button class="btn btn-danger">@Html.ActionLink("Delete","Delete",new {p_id = item.Id}, new {@style="color: white;"})</button>
+                <button class="btn btn-primary">@Html.ActionLink("Reviews","Index","Review",new {p_id = item.Id}, new {@style="color: white"})</button>
             </td>
         </tr>
     }
