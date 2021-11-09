@@ -1,5 +1,7 @@
 using RRDL;
 using RRModels;
+using System;
+using System.Collections.Generic;
 
 namespace RRBL
 {
@@ -13,6 +15,20 @@ namespace RRBL
         public Review GetReviewById(int p_id)
         {
            return _repo.GetReviewById(p_id);
+        }
+
+        public Tuple<List<Review>, double> GetAllReviewByRestId(int p_id)
+        {
+            List<Review> listOfReview = _repo.GetAllReviewByRestId(p_id);
+            double overallRating = 0.0;
+
+            foreach (Review item in listOfReview)
+            {
+                overallRating += item.Rating;
+            }
+            overallRating = overallRating / listOfReview.Count;
+
+            return new Tuple<List<Review>, double>(listOfReview, overallRating);
         }
 
         public Review UpdateReview(Review p_rev, int p_howMuchAdded)

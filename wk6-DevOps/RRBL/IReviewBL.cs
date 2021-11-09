@@ -1,4 +1,6 @@
 using RRModels;
+using System;
+using System.Collections.Generic;
 
 namespace RRBL
 {
@@ -18,5 +20,12 @@ namespace RRBL
         /// <param name="p_howMuchAdded">This is how much you are adding it</param>
         /// <returns>It returns the added review</returns>
         Review UpdateReview(Review p_rev, int p_howMuchAdded);
+
+        /// <summary>
+        /// Will give reviews based on Rest Id and calculated overallRating
+        /// </summary>
+        /// <param name="p_id">This is the restaurant Id it will used to find the reviews</param>
+        /// <returns>Tuple that has the list of reviews and the overall rating</returns>
+        Tuple<List<Review>, double> GetAllReviewByRestId(int p_id);
     }
 }
