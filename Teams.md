@@ -16,6 +16,13 @@
 * Team objectives they must complete
 * Team objectives might change since it is a living document
 * Objective 1 - Update project to be a code-first approach
+* Objective 2 - Update terminal UI to website UI using ASP.net (this will probably take forever)
+   * Add a customer (sign up process)
+   * Sign in as customer (or search for a customer)
+      * I would look into asp.net identity for a proper sign up but not required
+   * View store location
+   * View store location's inventory
+
 
 # ~~Synergy~~ Appsassians Team
 * Daniel Lara
