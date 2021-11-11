@@ -1,0 +1,38 @@
+name: CI/CD
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.x
+    - name: Setup ASP .NET
+      uses: nuget/setup-nuget@v1
+      with:
+        nuget-version: ${{env.NUGET_VERSION}}
+    - name: Restore dependencies
+      run: dotnet restore wk6-DevOps/ # The filepath will differ for yours
+    - name: Build
+      run: dotnet build wk6-DevOps/ --configuration Release --no-restore
+    - name: Test
+      run: dotnet test wk6-DevOps/ --no-restore --verbosity normal
+    - name: Publish
+      run: dotnet publish wk6-DevOps/ --configuration Release -o ./publish
+    - name: Deploy
+      uses: azure/webapps-deploy@2
+      with:
+        app-name: 211004-RR-Web-App # Replace this with your web app name
+        publish-profile: ${{secrets.AZURE_WEBAPP_PUBLISH_PROFILE}}
+        package: ./publish
+      
