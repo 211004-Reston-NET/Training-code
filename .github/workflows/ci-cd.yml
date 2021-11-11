@@ -9,30 +9,87 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
+    # Getting the SDK dependencies we need for both our application and sonarcloud/sonarscanner
     - uses: actions/checkout@v2
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 5.0.x
+        
     - name: Setup ASP .NET
       uses: nuget/setup-nuget@v1
       with:
         nuget-version: ${{env.NUGET_VERSION}}
+        
+    - name: Set up JDK 11 
+      uses: actions/setup-java@v1
+      with:
+        java-version: 1.11
+        
+    # Getting the actual packages and scanner
+    - name: Cache SonarCloud packages
+      uses: actions/cache@v1
+      with:
+          path: ~\sonar\cache
+          key: ${{ runner.os }}-sonar
+          restore-keys: ${{ runner.os }}-sonar
+          
+    - name: Cache SonarCloud scanner
+      id: cache-sonar-scanner
+      uses: actions/cache@v1
+      with:
+          path: .\.sonar\scanner
+          key: ${{ runner.os }}-sonar-scanner
+          restore-keys: ${{ runner.os }}-sonar-scanner
+          
+    # Installing our SonarCloud scanner
+    - name: Install SonarCloud scanner
+      if: steps.cache-sonar-scanner.outputs.cache-hit != 'true'
+      shell: powershell
+      run: |
+          New-Item -Path .\.sonar\scanner -ItemType Directory
+          dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner
+    
+    #Restore dependencies .NET application
     - name: Restore dependencies
-      run: dotnet restore wk6-DevOps/ # The filepath will differ for yours
-    - name: Build
-      run: dotnet build wk6-DevOps/ --configuration Release --no-restore
-    - name: Test
-      run: dotnet test wk6-DevOps/ --no-restore --verbosity normal
+      run: dotnet restore wk6-DevOps/RRWebUI # The filepath will differ for yours
+      
+    #Build and have scanner analyze our code
+    - name: Build and analyze
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      shell: powershell
+      run: |
+          .\.sonar\scanner\dotnet-sonarscanner begin /k:"211004-Reston-NET_Training-code" /o:"211004-reston-net" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
+          dotnet build wk6-DevOps/RRWebUI --configuration Release
+          .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
+          
     - name: Publish
-      run: dotnet publish wk6-DevOps/ --configuration Release -o ./publish
+      run: dotnet publish wk6-DevOps/RRWebUI --configuration Release -o ./publish
+      
+    - name: Upload sonarscanner report
+      uses: actions/upload-artifact@v2
+      with:
+        name: RRWebUI
+        path: ./publish
+      
+  deploy:
+    runs-on: windows-latest
+    needs: build
+    environment:
+      name: 'Production'
+      url: $${{steps.deploy-to-webapp.output.webapp-url}}
+    
+    steps:
     - name: Deploy
       uses: azure/webapps-deploy@v2
       with:
         app-name: 211004-RR-Web-App # Replace this with your web app name
+        slot-name: 'Production'
         publish-profile: ${{secrets.AZURE_WEBAPP_PUBLISH_PROFILE}}
         package: ./publish
       
