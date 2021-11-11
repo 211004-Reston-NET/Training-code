@@ -44,6 +44,7 @@ jobs:
           path: .\.sonar\scanner
           key: ${{ runner.os }}-sonar-scanner
           restore-keys: ${{ runner.os }}-sonar-scanner
+          sonarTestArgument: wk6-DevOps/ --logger trx --collect"xPlat Code Coverage" -- DataCollectionRunSetting.DataCollectors.DataCollector.Configuration.Format=opencover
           
     # Installing our SonarCloud scanner
     - name: Install SonarCloud scanner
@@ -57,6 +58,7 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore wk6-DevOps/RRWebUI # The filepath will differ for yours
       
+    # Unit Testing
     - name: Test
       run: dotnet test wk6-DevOps/ --no-restore --verbosity normal
       
@@ -70,8 +72,6 @@ jobs:
           .\.sonar\scanner\dotnet-sonarscanner begin /k:"211004-Reston-NET_Training-code" /o:"211004-reston-net" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
           dotnet build wk6-DevOps/RRWebUI --configuration Release
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
-    #  with:
-     #   sonarTestArgument: wk6-DevOps --logger trx --collect"xPlat Code Coverage" -- DataCollectionRunSetting.DataCollectors.DataCollector.Configuration.Format=opencover
           
     - name: Publish
       run: dotnet publish wk6-DevOps/ --configuration Release -o ./publish
@@ -81,21 +81,16 @@ jobs:
       with:
         name: RRWebUI
         path: ./publish
-      
-  deploy:
-    runs-on: windows-latest
-    needs: build
-    environment:
-      name: 'Production'
-      url: $${{steps.deploy-to-webapp.output.webapp-url}}
+
+#     needs: build
+#     environment:
+#       name: 'Production'
+#       url: $${{steps.deploy-to-webapp.output.webapp-url}}
     
-    steps:
     - name: Deploy
       uses: azure/webapps-deploy@v2
-      id: deploy-to-webapp
       with:
         app-name: 211004-RR-Web-App # Replace this with your web app name
-        slot-name: 'Production'
         publish-profile: ${{secrets.AZURE_WEBAPP_PUBLISH_PROFILE}}
         package: ./publish
       
