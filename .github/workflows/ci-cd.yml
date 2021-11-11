@@ -44,7 +44,7 @@ jobs:
           path: .\.sonar\scanner
           key: ${{ runner.os }}-sonar-scanner
           restore-keys: ${{ runner.os }}-sonar-scanner
-          sonarTestArgument: wk6-DevOps/ --logger trx --collect"xPlat Code Coverage" -- DataCollectionRunSetting.DataCollectors.DataCollector.Configuration.Format=opencover
+          sonarTestArgument: wk6-DevOps/ --logger trx --collect"xPlat Code Coverage" --DataCollectionRunSetting.DataCollectors.DataCollector.Configuration.Format=opencover
           
     # Installing our SonarCloud scanner
     - name: Install SonarCloud scanner
@@ -58,9 +58,11 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore wk6-DevOps/RRWebUI # The filepath will differ for yours
       
-    # Unit Testing
-    - name: Test
-      run: dotnet test wk6-DevOps/ --no-restore --verbosity normal
+#     # Unit Testing
+#     - name: Test
+#       run: dotnet test wk6-DevOps/ --no-restore --verbosity normal
+#       arguments: '--configuration $(BuildConfiguration) --no-build /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=$(Agent.TempDirectory)/coverage/ /p:MergeWith=$(Agent.TempDirectory)/coverage/ --collect "Code coverage"'
+    
       
     #Build and have scanner analyze our code
     - name: Build and analyze
@@ -73,10 +75,19 @@ jobs:
           dotnet build wk6-DevOps/RRWebUI --configuration Release
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
           
+    - name: Test
+      run: dotnet test 
     - name: Publish
-      run: dotnet publish wk6-DevOps/ --configuration Release -o ./publish
+      run: dotnet test "./src/DotNetCoreCryptography.Tests/DotNetCoreCryptography.Tests.csproj" `
+          --collect:"XPlat Code Coverage" `          
+          --results-directory TestResults/ `          
+          --logger "trx;LogFileName=unittests.trx" `  
+          --no-build `
+          --no-restore `
+          --configuration release `
+          -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover # Special open cover data collector
       
-    - name: Upload sonarscanner report
+    - name: Upload artifact for deployment
       uses: actions/upload-artifact@v2
       with:
         name: RRWebUI
