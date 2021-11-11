@@ -72,7 +72,7 @@ jobs:
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
           
     - name: Publish
-      run: dotnet publish wk6-DevOps/RRWebUI --configuration Release -o ./publish
+      run: dotnet publish wk6-DevOps/ --configuration Release -o ./publish
       
     - name: Upload sonarscanner report
       uses: actions/upload-artifact@v2
@@ -94,5 +94,5 @@ jobs:
         app-name: 211004-RR-Web-App # Replace this with your web app name
         slot-name: 'Production'
         publish-profile: ${{secrets.AZURE_WEBAPP_PUBLISH_PROFILE}}
-        package: ../publish
+        package: ./publish
       
