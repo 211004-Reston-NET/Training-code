@@ -60,7 +60,7 @@ jobs:
       
 #     # Unit Testing
     - name: Test
-      run: dotnet test wk6-DevOps/RRTest --logger trx --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover
+      run: dotnet test wk6-DevOps/ --logger trx --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover
       
     #Build and have scanner analyze our code
     - name: Build and analyze
