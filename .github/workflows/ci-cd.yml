@@ -57,6 +57,9 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore wk6-DevOps/RRWebUI # The filepath will differ for yours
       
+    - name: Test
+      run: dotnet test wk6-DevOps/ --logger trx --collect:"XPlat Code Coverage" --DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover
+      
     #Build and have scanner analyze our code
     - name: Build and analyze
       env:
