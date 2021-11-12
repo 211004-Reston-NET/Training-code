@@ -106,7 +106,7 @@ jobs:
     - uses: mr-smithers-excellent/docker-build-push@v5
       name: Build & push Docker image
       with:
-        image: scifiler/MVCwebapp
+        image: scifiler/RRWebUI
         tags: v1, latest
         registry: docker.io
         dockerfile: wk6-DevOps/
