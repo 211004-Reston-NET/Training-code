@@ -109,7 +109,7 @@ jobs:
         image: scifiler/rrwebui
         tags: v1, latest
         registry: docker.io
-        dockerfile: wk6-DevOps/
+        dockerfile: wk6-DevOps/dockerfile
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }} 
     
