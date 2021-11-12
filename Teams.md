@@ -22,6 +22,7 @@
       * I would look into asp.net identity for a proper sign up but not required
    * View store location
    * View store location's inventory
+* Objective 3 - Setup pipeline
 
 
 # ~~Synergy~~ Appsassians Team
