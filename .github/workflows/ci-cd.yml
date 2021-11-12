@@ -77,19 +77,21 @@ jobs:
       with:
         name: RRWebUI
         path: ./publish
-        
-    - name: Publish
-      run: dotnet publish wk6-DevOps/ --configuration Release -o ./publish
 
 #     needs: build
 #     environment:
 #       name: 'Production'
 #       url: $${{steps.deploy-to-webapp.output.webapp-url}}
+
   deploy:
     needs: build
     runs-on: ubuntu-latest
   
     steps:
+    
+    - name: Publish
+      run: dotnet publish wk6-DevOps/ --configuration Release -o ./publish
+      
     - name: Deploy
       uses: azure/webapps-deploy@v2
       with:
