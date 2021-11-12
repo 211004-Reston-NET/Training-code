@@ -95,9 +95,10 @@ jobs:
         slot-name: 'Production'
         publish-profile: ${{secrets.AZURE_WEBAPP_PUBLISH_PROFILE}} # Make sure you have a secret publish folder obtained from Azure
         package: ./publish #This filepath might change depending on your repo
-      
+  
+  #Job to dockerize the app and publish it
   dockerize:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest #Very important to set OS to ubuntu since it has docker pre-installed
     environment:
       name: Docker
     
@@ -108,11 +109,11 @@ jobs:
     - uses: mr-smithers-excellent/docker-build-push@v5
       name: Build & push Docker image
       with:
-        image: scifiler/rrwebui
+        image: scifiler/rrwebui #Change this to whatever name you want your image to be
         tags: v1, latest
-        registry: docker.io
-        directory: wk6-DevOps/
-        dockerfile: wk6-DevOps/dockerfile
-        username: ${{ secrets.DOCKER_USERNAME }}
+        registry: docker.io 
+        directory: wk6-DevOps/ #The main directory of your application (might differ to yours)
+        dockerfile: wk6-DevOps/dockerfile #The actual docker file location
+        username: ${{ secrets.DOCKER_USERNAME }} # Put your docker login credentials in your secrets
         password: ${{ secrets.DOCKER_PASSWORD }} 
     
