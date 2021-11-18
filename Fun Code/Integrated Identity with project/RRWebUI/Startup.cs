@@ -57,7 +57,7 @@ namespace RRWebUI
             app.UseRouting();
 
             app.UseAuthorization();
-            app.UseAuthentication();
+            app.UseAuthentication(); //Added authentication
 
             app.UseEndpoints(endpoints =>
             {

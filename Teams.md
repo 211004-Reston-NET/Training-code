@@ -15,45 +15,30 @@
 # Living Document
 * Team objectives they must complete
 * Team objectives might change since it is a living document
-* Objective 1 - Update project to be a code-first approach
-* Objective 2 - Update terminal UI to website UI using ASP.net (this will probably take forever)
-   * Add a customer (sign up process)
-   * Sign in as customer (or search for a customer)
-      * I would look into asp.net identity for a proper sign up but not required
-   * View store location
-   * View store location's inventory
-* Objective 3 - Setup pipeline
+* Objective 1 - Decide team name
+* Objective 2 - Come up with an idea that everyone agrees on
 
 
-# ~~Synergy~~ Appsassians Team
-* Daniel Lara
-* Brian Stiner
-* Oscar Cerna
-* Anddy Lopez
-* Ayoghasaku Agborbesong
-* Ronald McCool
-
-# ~~Amplifier~~ Git Good Team 
+#  Colin Team
 * Colin Mudie
-* Joshua Lopez Ramos
-* Adam Czyryca
-* Jacob Williams
-* Ja'mai Marine
-* Christian Matis
-* Sarah Davis
-
-# ~~Vanquish~~ Gitr Dun Team
 * Chase Henry
-* David Odhiambo
-* Kat Oakman
-* Angel Santos
-* Carvell Williams
-* Florencio Gallegos
+* Jacob Williams
+* Ayogh Agborbesong
 
-# ~~Alchemy~~ TheFullMetalAlchemist Team
+# Michael Team 
 * Michael Mason
-* Justin Smith
-* Nathan Feist
-* John Canace
+* Anddy Lopez
 * Oisin Crowley
-* Ray Elcock
+* John Canace
+
+# Joshua Team
+* Joshua Lopez
+* Oscar Cerna
+* Adam Czyryca
+* Carvell Wilkins
+
+# Brian Team
+* Brian Stiner
+* Angel Santos
+* Danny Lara
+* Sarah Davis
