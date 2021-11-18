@@ -62,7 +62,8 @@
 * Team objectives might change since it is a living document
 * Objective 1 - Decide team name
 * Objective 2 - Come up with an idea that everyone agrees on
-* Objective 3 - Come up with kanban board and that will be everyone's task is whatever is assigned there that I will check
+* Objective 3 - Create a repository for your team
+* Objective 4 - Come up with kanban board and do standup forms in the wiki tab of your team repository. Will be checked to see how everyone is doing.
 
 
 #  Colin Team
