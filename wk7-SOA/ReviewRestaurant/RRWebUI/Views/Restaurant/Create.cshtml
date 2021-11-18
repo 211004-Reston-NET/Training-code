@@ -1,0 +1,32 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model RRWebUI.Models.RestaurantVM
+
+<h1 class="display-4">Create Restaurant</h1>
+
+<form asp-action="Create">
+    <div asp-validation-summary="ModelOnly"></div>
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label">Name</label>
+        <input asp-for="Name" type="text" class="form-control">
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="City" class="form-label">City</label>
+        <input asp-for="City" type="text" class="form-control">
+        <span asp-validation-for="City" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="State" class="form-label">State</label>
+        <input asp-for="State" type="text" class="form-control">
+        <span asp-validation-for="State" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary" value="Create">Submit</button>
+</form>
