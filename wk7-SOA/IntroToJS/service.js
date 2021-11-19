@@ -51,3 +51,13 @@ function GetPokemon() {
     xhr.send();
 }
 
+//Fetch Demo
+function GetPokemonFetch() {
+    let pokemonName = document.querySelector("#pokemonName").value;
+
+    fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
+        .then(result => result.json())
+        .then(pokemon => {
+            document.querySelector("#pokemonImageFetch").setAttribute("src", pokemon.sprites.front_default);
+        })
+}
