@@ -84,7 +84,7 @@
 * Adam Czyryca
 * Carvell Wilkins
 
-# Brian Team
+# Appsassins Team
 * Brian Stiner
 * Angel Santos
 * Danny Lara
