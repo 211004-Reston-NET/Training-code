@@ -72,13 +72,13 @@
 * Jacob Williams
 * Ayogh Agborbesong
 
-# Michael Team 
+# The Doggie Delegates Team 
 * Michael Mason
 * Anddy Lopez
 * Oisin Crowley
 * John Canace
 
-# Joshua Team
+# Team Rocket
 * Joshua Lopez
 * Oscar Cerna
 * Adam Czyryca
