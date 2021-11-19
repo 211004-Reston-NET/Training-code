@@ -66,7 +66,7 @@
 * Objective 4 - Come up with kanban board and do standup forms in the wiki tab of your team repository. Will be checked to see how everyone is doing.
 
 
-#  Colin Team
+# Stream Snipers Team
 * Colin Mudie
 * Chase Henry
 * Jacob Williams
