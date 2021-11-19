@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS</title>
+</head>
+<body>
+    <h1>JS Demo</h1>
+    
+    <div class="container">
+        <h2>Functions in JS</h2>
+        <button onclick="BasicFunction()">Basic Function</button>
+        <button onclick="FirstFunction(SecondFunction)">Callback Function</button>
+        <button onclick="lambda()">Lambda Function</button>
+    </div>
+
+    <div class="container">
+        <h2>Encapsulation with IIFEs</h2>
+        <button onclick="console.log(Outer())">First button</button>
+        <button onclick="console.log(Outer())">Second button</button>
+
+        <h2>Encapsulation Bank demo</h2>
+        <button onclick="bankAccountTest()">Click me for stephen's account to be created!</button>
+    </div>
+
+    <div class="container">
+        <h2>Using AJAX to get Pokemon</h2>
+        <form>
+            <label>Pokemon Name</label>
+            <input id="pokemonName" type="text">
+        </form>
+        <button onclick="GetPokemon()">Get Pokemon</button>
+        <h5>Result AJAX</h5>
+        <div id = "result">
+            <img id="pokemonImage" src="">
+        </div>
+
+        <button onclick="GetPokemonFetch()">Get Pokemon</button>
+        <h5>Result Fetch</h5>
+        <div id = "resultFetch">
+            <img id="pokemonImageFetch" src="">
+        </div>
+    </div>
+
+    <script>
+        function BasicFunction() {
+            console.log("Hello World");
+        }
+        
+        function FirstFunction(callback) {
+            console.log("First Function was used");
+            let name = prompt("Please enter your name");
+            callback(test);
+            console.log("Back to the first function");
+        }
+
+        function SecondFunction(name) {
+            console.log("Second Function was used");
+            console.log(name);
+        }
+
+        let lambda = () => console.log("I'm an arrow function");
+
+        function bankAccountTest()
+        {
+            let stephenAccount = bankAccount(100);
+            console.log(stephenAccount.currentMoney);
+            console.log(stephenAccount.withdrawl(20));
+            console.log(stephenAccount.deposit(20));
+        }
+    </script>
+
+    <script src="IIFE.js"></script>
+    <script src="service.js"></script>
+</body>
+</html>
