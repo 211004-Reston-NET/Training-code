@@ -146,11 +146,11 @@ poke2.catchPhrase("Pika PIIII");
 interface ThunderType
 {
     type:string;
-    thunder?:string;
+    thunder?:string; //You can make properties optional
     weakness:string[];
 
     thunderBolt(); //Function that doesn't have any implementation
-    run?();
+    run?(); //You can make functions optional
 }
 
 class Zapdos implements ThunderType {
