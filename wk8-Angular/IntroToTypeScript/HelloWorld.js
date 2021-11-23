@@ -128,7 +128,7 @@ var Pikachu = /** @class */ (function (_super) {
 var poke2 = new Pikachu();
 poke2.catchPhrase("Pika PIIII");
 var Zapdos = /** @class */ (function () {
-    function Zapdos(parameters) {
+    function Zapdos() {
     }
     Zapdos.prototype.thunderBolt = function () {
     };

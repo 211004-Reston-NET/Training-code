@@ -158,7 +158,7 @@ class Zapdos implements ThunderType {
     type:string;
     weakness:string[];
 
-    constructor(parameters) {
+    constructor() {
         
     }
 
