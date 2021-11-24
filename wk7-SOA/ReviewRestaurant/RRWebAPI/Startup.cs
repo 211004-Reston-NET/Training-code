@@ -41,7 +41,6 @@ namespace RRWebAPI
             services.AddScoped<IRepository, RespositoryCloud>();
             services.AddScoped<IRestaurantBL, RestaurantBL>();
             services.AddScoped<IReviewBL, ReviewBL>();
-            
             services.AddCors(
                 (builder) => {
                     builder.AddDefaultPolicy((policy) => {
