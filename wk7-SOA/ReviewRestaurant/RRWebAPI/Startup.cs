@@ -41,6 +41,16 @@ namespace RRWebAPI
             services.AddScoped<IRepository, RespositoryCloud>();
             services.AddScoped<IRestaurantBL, RestaurantBL>();
 
+            
+            services.AddCors(
+                (builder) => {
+                    builder.AddDefaultPolicy((policy) => {
+                        policy.WithOrigins("http://localhost:4200", "https://localhost:4200")
+                            .AllowAnyHeader() //Allows any header we provide in the http header request
+                            .AllowAnyMethod(); //Allows any method we provide in the http request
+                    });
+                }
+            );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
