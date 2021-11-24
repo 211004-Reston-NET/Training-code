@@ -85,7 +85,7 @@ jobs:
     
     #Creates publish folder to be deployed to our webapp
     - name: Publish
-      run: dotnet publish wk7-SOA/ReviewRestaurant/ --configuration Release -o ./publish
+      run: dotnet publish wk7-SOA/ReviewRestaurant/RRWebAPI --configuration Release -o ./publish
       
     #Deploying our app to azure web app
     - name: Deploy
