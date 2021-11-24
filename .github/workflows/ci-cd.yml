@@ -50,11 +50,11 @@ jobs:
     
     #Restore dependencies .NET application
     - name: Restore dependencies
-      run: dotnet restore wk7-SOA/RestaurantReview/RRWebAPI # The filepath will differ for yours
+      run: dotnet restore wk7-SOA/ReviewRestaurant/RRWebAPI # The filepath will differ for yours
       
     # Unit Testing
     - name: Test
-      run: dotnet test wk7-SOA/RestaurantReview/ --logger trx --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover
+      run: dotnet test wk7-SOA/ReviewRestaurant/ --logger trx --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover
       
     #Build and have scanner analyze our code
     #When running the long run command make sure you edit the filepaths to the correct one in your repository
@@ -65,7 +65,7 @@ jobs:
       shell: powershell
       run: |
           .\.sonar\scanner\dotnet-sonarscanner begin /k:"211004-Reston-NET_Training-code" /o:"211004-reston-net" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.exclusions="**RRWebAPI/wwwroot/lib/**" /d:sonar.cs.opencover.reportsPaths="**/TestResults/**/coverage.opencover.xml" -d:sonar.vs.vstest.reportsPaths="**/TestResult/*trx"
-          dotnet build wk7-SOA/RestaurantReview/RRWebAPI --configuration Release
+          dotnet build wk7-SOA/ReviewRestaurant/RRWebAPI --configuration Release
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
 
   #Job to deploying our repository to the Azure webapp
@@ -85,7 +85,7 @@ jobs:
     
     #Creates publish folder to be deployed to our webapp
     - name: Publish
-      run: dotnet publish wk7-SOA/RestaurantReview/ --configuration Release -o ./publish
+      run: dotnet publish wk7-SOA/ReviewRestaurant/RRWebAPI --configuration Release -o ./publish
       
     #Deploying our app to azure web app
     - name: Deploy
