@@ -40,7 +40,7 @@ namespace RRWebAPI
             services.AddDbContext<RRDatabaseContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Reference2DB")));
             services.AddScoped<IRepository, RespositoryCloud>();
             services.AddScoped<IRestaurantBL, RestaurantBL>();
-
+            services.AddScoped<IReviewBL, ReviewBL>();
             
             services.AddCors(
                 (builder) => {
