@@ -10,6 +10,7 @@ import { AuthGuard, AuthModule } from '@auth0/auth0-angular';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LoginComponent } from './login/login.component';
 import { PokemonComponent } from './pokemon/pokemon.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 /*
   Like csproj in C#, app.module.ts defines all the dependencies that your angular application will need
@@ -30,6 +31,7 @@ import { PokemonComponent } from './pokemon/pokemon.component';
   imports: [
     BrowserModule,
     HttpClientModule,
+    ReactiveFormsModule,
     AuthModule.forRoot({
       clientId: "ZrLI7eQUchr5Kjq8i4sur34PoCLLV8bR",
       domain: "dev-7hg9m6jt.us.auth0.com"

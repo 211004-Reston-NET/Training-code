@@ -1,1 +1,15 @@
-<p>pokemon works!</p>
+<img [src]="imageSource1">
+<img [src]="imageSource2">
+<p>{{currentPokemon}}</p>
+
+<form [formGroup] = "pokeGroup">
+    <h2>Input PokeId</h2>
+    <input type="text" formControlName="id">
+    <h2>Input PokeName</h2>
+    <input type="text" formControlName="name">
+    <div *ngIf="name?.dirty">
+        <div class="text-danger" *ngIf="name?.errors?.['required']">The name is required</div>
+    </div>
+    <br>
+    <button class="btn btn-primary" (click) = "getPokemon(pokeGroup)">Submit</button>
+</form>
