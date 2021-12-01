@@ -1,0 +1,27 @@
+<h1 class="display-3">List Of Restaurant</h1>
+
+<!-- Interpolation lets us grab information from TS file -->
+<p [hidden]="show">{{listOfRest[0].name}}</p>
+<!-- It can also do simple operations -->
+<p>{{10+18}}</p>
+<button class="btn btn-primary" (click)="showTable()">Show Table</button>
+
+<table *ngIf="show" class="table table-hover">
+    <thead>
+        <th>Name</th>
+        <th>City</th>
+        <th>State</th>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let restaurant of listOfRest">
+            <td>{{restaurant.name}}</td>
+            <td>{{restaurant.city}}</td>
+            <td>{{restaurant.state}}</td>
+
+            <button class="btn btn-primary" (click) = "showReview(restaurant.id)">Review</button>
+            <app-review-table [show]="restaurant.show" [restId] = "restaurant.id"></app-review-table>
+            <!-- <a routerLink="/review">Review</a> -->
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,12 @@
+<h1>Add Restaurant</h1>
+
+<form [formGroup] = "restGroup">
+    <h2>Name</h2>
+    <input type="text" formControlName = "name">
+    <h2>City</h2>
+    <input type="text" formControlName = "city">
+    <h2>State</h2>
+    <input type="text" formControlName = "state">
+    <br>
+    <button class="btn btn-primary" (click)="createRestaurant(restGroup)">Submit</button>
+</form>

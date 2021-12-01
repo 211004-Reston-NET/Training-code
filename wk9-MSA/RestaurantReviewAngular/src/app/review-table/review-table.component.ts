@@ -11,17 +11,17 @@ export class ReviewTableComponent implements OnInit, OnChanges {
 
 
   @Input()
-  restId:number | undefined  = 0;
+  restId:number = 0;
 
   @Input()
-  show:boolean | undefined = true;
+  show:boolean = true;
 
   listOfReview:Review[] = [];
   overallRating:number = 0;
 
   constructor(private http:RevAPIService)
   { 
- 
+
   }
 
   ngOnChanges(changes: SimpleChanges): void {

@@ -1,0 +1,13 @@
+<h6>{{overallRating}}</h6>
+<table *ngIf="show" class="table-primary">
+    <thead>
+        <th>Rating</th>
+        <th>Description</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let review of listOfReview">
+            <td>{{review.description}}</td>
+            <td>{{review.rating}}</td>            
+        </tr>
+    </tbody>
+</table>

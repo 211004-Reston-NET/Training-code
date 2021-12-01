@@ -1,0 +1,17 @@
+
+<!--  authService.isAuthenticated will give either a true or false value if the user is authenticated or not-->
+<ng-container *ngIf="auth0.isAuthenticated$ | async; else loggedOut">
+    <button class="btn btn-danger" (click)="auth0.logout({ returnTo: document.location.origin })">
+      Log out
+    </button>
+  </ng-container>
+
+  <!-- 
+      ng-template is just the else of the ng container
+      it will display this section instead of auth0.isAuthenticated is false
+-->
+  <ng-template #loggedOut>
+    <button class= "btn btn-primary" (click)="auth0.loginWithPopup()">Log in</button>
+  </ng-template>
+
+<!-- <button (click) = "auth0.loginWithRedirect()">Log in</button> -->
