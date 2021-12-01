@@ -5,6 +5,7 @@
 <!-- It can also do simple operations -->
 <p>{{10+18}}</p>
 <button class="btn btn-primary" (click)="showTable()">Show Table</button>
+<button class="btn btn-primary" *ngIf="auth0.isAuthenticated$ | async" (click)="redirectToAddRest()">Add Restaurant</button>
 
 <table *ngIf="show" class="table table-hover">
     <thead>

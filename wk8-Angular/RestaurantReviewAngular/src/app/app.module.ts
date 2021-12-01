@@ -11,6 +11,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { LoginComponent } from './login/login.component';
 import { PokemonComponent } from './pokemon/pokemon.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AddRestaurantComponent } from './add-restaurant/add-restaurant.component';
 
 /*
   Like csproj in C#, app.module.ts defines all the dependencies that your angular application will need
@@ -24,7 +25,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReviewTableComponent,
     NavbarComponent,
     LoginComponent,
-    PokemonComponent
+    PokemonComponent,
+    AddRestaurantComponent
   ],
 
   //This will hold references to Module
@@ -41,6 +43,7 @@ import { ReactiveFormsModule } from '@angular/forms';
       {path: "restaurant", component:RestaurantTableComponent},
       {path: "review", component:ReviewTableComponent},
       {path: "pokemon", component:PokemonComponent, canActivate:[AuthGuard]},
+      {path: "addRest", component:AddRestaurantComponent, canActivate:[AuthGuard]},
       {path: "**", component:RestaurantTableComponent} //** is a wild card that any other url you ask for as a user will always point to restaurantTableComponent
     ]),
   ],

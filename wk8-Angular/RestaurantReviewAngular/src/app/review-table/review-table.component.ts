@@ -11,10 +11,10 @@ export class ReviewTableComponent implements OnInit, OnChanges {
 
 
   @Input()
-  restId:number = 0;
+  restId:number | undefined = 0;
 
   @Input()
-  show:boolean = true;
+  show:boolean | undefined = true;
 
   listOfReview:Review[] = [];
   overallRating:number = 0;

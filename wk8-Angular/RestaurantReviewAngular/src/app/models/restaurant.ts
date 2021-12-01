@@ -1,8 +1,8 @@
 export interface Restaurant
 {
-    id:number;
+    id?:number;
     name:string;
     city:string;
     state:string;
-    show:boolean;
+    show?:boolean;
 }

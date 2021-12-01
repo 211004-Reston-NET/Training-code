@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '@auth0/auth0-angular';
 import { Restaurant } from '../models/restaurant';
 import { RevAPIService } from '../services/rev-api.service';
 
@@ -17,9 +18,9 @@ import { RevAPIService } from '../services/rev-api.service';
 export class RestaurantTableComponent implements OnInit {
 
   listOfRest:Restaurant[] = [];
-  show:boolean = false;
+  show:boolean | null = false;
 
-  constructor(private revApi:RevAPIService, private router:Router) 
+  constructor(private revApi:RevAPIService, private router:Router, public auth0:AuthService) 
   { 
     /*
       - getAllRestaurant() returns an observable
@@ -48,14 +49,18 @@ export class RestaurantTableComponent implements OnInit {
     this.show = !this.show;
   }
 
-  showReview(p_id:number)
+  showReview(p_id:number|undefined)
   {
     //This gets the current index of the element it found on the array
     let index:number = this.listOfRest.findIndex(rest => rest.id==p_id);
 
     //This flips that show property of it
     this.listOfRest[index].show = !this.listOfRest[index].show;
+  }
 
+  redirectToAddRest()
+  {
+    this.router.navigateByUrl("addRest");
   }
 
 }

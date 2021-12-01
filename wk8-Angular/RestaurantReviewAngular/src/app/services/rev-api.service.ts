@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Restaurant } from '../models/restaurant';
-import { Review } from '../models/review';
 
 @Injectable({
   providedIn: 'root'
@@ -23,9 +22,14 @@ export class RevAPIService {
   }
 
   //This will give me a list of reviews based on the restId
-  getReviewByRestId(p_id:number) : Observable<any>
+  getReviewByRestId(p_id:number | undefined) : Observable<any>
   {
     return this.http.get<any>(this.endpoint + "/Review/" + p_id);
+  }
+
+  createRestaurant(rest:Restaurant)
+  {
+    return this.http.post<Restaurant>(this.endpoint + "/Restaurant/Add", rest);
   }
 
 
