@@ -11,7 +11,7 @@
       it will display this section instead of auth0.isAuthenticated is false
 -->
   <ng-template #loggedOut>
-    <button class= "btn btn-primary" (click)="auth0.loginWithPopup()">Log in</button>
+    <button class= "btn btn-primary" (click)="auth0.loginWithPopup({screen_hint:'signup'})">Log in</button>
   </ng-template>
 
 <!-- <button (click) = "auth0.loginWithRedirect()">Log in</button> -->

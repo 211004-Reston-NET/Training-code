@@ -8,7 +8,15 @@ import { AuthService } from '@auth0/auth0-angular';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(public auth0:AuthService) { }
+  name:string | undefined = ""
+
+  constructor(public auth0:AuthService) 
+  { 
+    this.auth0.user$.subscribe((response) => {
+      this.name = response?.name;
+    });
+
+  }
 
   ngOnInit(): void {
   }

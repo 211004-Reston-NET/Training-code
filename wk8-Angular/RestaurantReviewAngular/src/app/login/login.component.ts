@@ -12,6 +12,11 @@ export class LoginComponent implements OnInit {
   constructor(public auth0:AuthService, @Inject(DOCUMENT) public document:Document) { }
 
   ngOnInit(): void {
+    this.auth0.loginWithPopup({screen_hint:'signup'});
+
+    this.auth0.user$.subscribe((response) => {
+      response?.name;
+    });
   }
 
 }
