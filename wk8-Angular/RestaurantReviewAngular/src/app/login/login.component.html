@@ -1,7 +1,7 @@
 
 <!--  authService.isAuthenticated will give either a true or false value if the user is authenticated or not-->
 <ng-container *ngIf="auth0.isAuthenticated$ | async; else loggedOut">
-    <button class="btn btn-danger" (click)="auth0.logout({ returnTo: document.location.origin })">
+    <button class="btn btn-danger body" (click)="auth0.logout({ returnTo: document.location.origin })">
       Log out
     </button>
   </ng-container>
