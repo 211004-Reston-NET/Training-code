@@ -1,0 +1,21 @@
+#We are declaring our base environment that this application needs
+from node:latest as build
+
+#Setting our working directory
+workdir /usr/local/app
+
+#copy our angular application and paste it on the working directory
+copy ./ /usr/local/app
+
+#Restoring and Building our angular app
+run npm install
+run npm run build
+
+#Serving the app with the nginx server
+#Great for using protocols we care about like HTTP, HTTPS
+from nginx:latest
+
+copy --from=build /usr/local/app/dist/RestaurantReviewAngular /usr/share/nginx/html
+
+#Exposing this port for us to use when we run it in a container, we will also use this port to run it in the ingress controller
+expose 80

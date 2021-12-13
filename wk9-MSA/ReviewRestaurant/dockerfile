@@ -12,17 +12,17 @@ copy RRBL/*.csproj RRBL/
 copy RRDL/*.csproj RRDL/
 copy RRModels/*.csproj RRModels/
 copy RRTest/*.csproj RRTest/
-copy RRWebUI/*.csproj RRWebUI/
+copy RRWebAPI/*.csproj RRWebAPI/
 
 # We need to build/restore our files (bin & obj)
-run cd RRWebUI && dotnet restore
+run cd RRWebAPI && dotnet restore
 
 # copy the source files
 copy . ./
 # cmd /bin/bash It was to check if it copied everything and restored everything
 
 # We need to publish the application and its dependencies to a folder for deployment
-run dotnet publish RRWebUI -c Release -o publish --no-restore
+run dotnet publish RRWebAPI -c Release -o publish --no-restore
 
 # We change our base image to be the runtime since we already used the SDK to create the application itself
 # This is to use a lot less memory
@@ -31,5 +31,6 @@ from mcr.microsoft.com/dotnet/aspnet:5.0 as runtime
 workdir /app
 copy --from=build /app/publish ./
 
-cmd ["dotnet", "RRWebUI.dll"]
+cmd ["dotnet", "RRWebAPI.dll"]
 
+expose 80

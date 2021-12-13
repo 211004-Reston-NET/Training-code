@@ -44,7 +44,7 @@ namespace RRWebAPI
             services.AddCors(
                 (builder) => {
                     builder.AddDefaultPolicy((policy) => {
-                        policy.WithOrigins("http://localhost:4200", "https://localhost:4200")
+                        policy.WithOrigins("http://localhost:4200", "https://localhost:4200", "https://20.62.244.114/", "http://20.62.244.114/")
                             .AllowAnyHeader() //Allows any header we provide in the http header request
                             .AllowAnyMethod(); //Allows any method we provide in the http request
                     });
